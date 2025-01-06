@@ -1,0 +1,28 @@
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Custom styles for gradient background */
+.gradient-bg {
+    background: linear-gradient(to right, #ffffff, #3b82f6);
+    /* White to Blue */
+}
+
+body {
+    margin: 0;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+#map {
+    height: 400px;
+    width: 100%;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
