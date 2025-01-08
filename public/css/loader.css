@@ -1,19 +1,31 @@
-    /* CSS animacija za loader */
-    @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-    }
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
 
-    .spinner-border {
-        width: 50px;
-        height: 50px;
-        border: 5px solid transparent;
-        border-top-color: #3498db;
-        border-radius: 50%;
-        animation: spin 1s linear infinite; /* Animacija rotacije */
-    }
+.spinner-border {
+    width: 50px;
+    height: 50px;
+    border: 5px solid transparent;
+    border-top-color: #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
 
-    /* Osnovna pozadina za preloader */
-    #loader {
-        display: none; /* Prikazivanje preloader-a */
-    }
+#loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(31, 41, 55, 0.5);
+    z-index: 50;
+}
+
+#loader.visible {
+    display: flex;
+}
+

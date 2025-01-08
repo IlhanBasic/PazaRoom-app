@@ -1,0 +1,84 @@
+/* General Container Styles */
+.container {
+    max-width: 1200px; /* Equivalent to max-w-7xl */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 16px; /* Equivalent to px-4 */
+    padding-right: 16px; /* Equivalent to px-4 */
+}
+
+/* Hero Section Styles */
+.hero-section {
+    background-color: #2563EB; /* Blue background equivalent to bg-blue-600 */
+    color: white; /* White text color */
+    padding-top: 80px; /* Equivalent to py-20 */
+    padding-bottom: 80px; /* Equivalent to py-20 */
+    text-align: center; /* Center text */
+}
+
+.hero-title {
+    font-size: 2.5rem; /* Equivalent to text-4xl */
+    font-weight: bold; /* Bold text */
+    margin-bottom: 16px; /* Equivalent to mb-4 */
+}
+
+/* Filter Section Styles */
+.filter-section {
+    background-color: #F7FAFC; /* Light gray background equivalent to bg-gray-100 */
+    padding-top: 64px; /* Equivalent to py-16 */
+    padding-bottom: 64px; /* Equivalent to py-16 */
+}
+
+.filter-title {
+    font-size: 2.5rem; /* Equivalent to text-4xl */
+    font-weight: bold; /* Bold text */
+    text-align: center; /* Center text */
+    margin-bottom: 32px; /* Equivalent to mb-8 */
+}
+
+.filter-container {
+    display: flex;
+    flex-direction: column; /* Column layout for small screens */
+    justify-content: center;
+    align-items: center;
+}
+
+/* Property List Section Styles */
+.property-list-section {
+    padding-top: 64px; /* Equivalent to py-16 */
+    padding-bottom: 64px; /* Equivalent to py-16 */
+}
+
+.property-list-title {
+    font-size: 1.875rem; /* Equivalent to text-3xl */
+    font-weight: bold; /* Bold text */
+    margin-bottom: 32px; /* Equivalent to mb-8 */
+    text-align: center; /* Center text */
+}
+
+/* Sorting Container Styles */
+.sorting-container {
+   display:flex;
+   justify-content:center;
+   align-items:center;
+}
+
+/* Property Grid Styles */
+.property-grid {
+   display:grid;
+   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Responsive grid layout */
+   gap: 32px; /* Space between property cards equivalent to gap-8 */ 
+}
+
+/* No Properties Message Styles */
+.no-properties-message {
+   text-align:center;
+   color:#4B5563; /* Gray color equivalent to text-gray-600 */ 
+}
+
+/* Pagination Container Styles */ 
+.pagination-container {
+   margin-left:auto;
+   margin-right:auto;
+   margin-top:32px; /* Space above pagination */ 
+}

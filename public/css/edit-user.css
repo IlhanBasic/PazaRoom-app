@@ -1,0 +1,146 @@
+.edit-user-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px;
+    background: linear-gradient(to right, white, #3b82f6);
+    min-height: 100vh;
+    z-index: 0;
+}
+
+.edit-user-form {
+    display: flex;
+    width: 75%;
+    max-width: 50%;
+    background-color: white;
+    border-radius: 16px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transform: scale(1);
+    transition: transform 0.2s ease-out;
+}
+
+.edit-user-form:hover {
+    transform: scale(1.01);
+}
+
+.edit-user-image-section {
+    width: 50%;
+    background-image: url('/images/profile-photo.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    animation: kenburns 10s ease-in-out infinite;
+}
+
+.edit-user-form-content {
+    padding: 32px;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.edit-user-form-title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 24px;
+    animation: slideDown 0.5s ease-out;
+}
+
+.edit-user-form-group {
+    margin-bottom: 16px;
+    animation: slideRight 0.5s ease-out;
+}
+
+.edit-user-label {
+    display: block;
+    font-size: 14px;
+    font-weight: medium;
+    color: #4b5563;
+}
+
+.edit-user-input-field {
+    margin-top: 4px;
+    width: 100%;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    padding: 8px;
+    transition: all 0.3s ease-in-out;
+}
+
+.edit-user-input-field:focus {
+    border-color: transparent;
+    box-shadow: 0 0 0 2px #3b82f6;
+}
+
+.edit-user-input-field:hover {
+    border-color: #93c5fd;
+}
+
+.edit-user-error-message {
+    color: #f87171;
+    font-size: 12px;
+    animation: shake 0.5s ease-in-out;
+}
+
+.edit-user-submit-button {
+    width: 100%;
+    background-color: #2563eb;
+    color: white;
+    padding: 16px;
+    border-radius: 8px;
+    margin-top: 24px;
+    transition: all 0.3s ease-out;
+}
+
+.edit-user-submit-button:hover {
+    background-color: #1d4ed8;
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.edit-user-submit-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #3b82f6;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideRight {
+    from { transform: translateX(-20px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes kenburns {
+    0% { background-position: 0% 0%; }
+    50% { background-position: 5% 5%; }
+    100% { background-position: 0% 0%; }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-2px); }
+    50% { transform: translateX(2px); }
+    75% { transform: translateX(-2px); }
+}
+
+@media (max-width: 768px) {
+    .edit-user-image-section {
+        display: none;
+    }
+    
+    .edit-user-form {
+        width: 90%;
+        max-width: 100%;
+    }
+    .edit-user-form-content {
+        width: 100%;
+    }
+}

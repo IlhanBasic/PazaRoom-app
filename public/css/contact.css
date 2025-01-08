@@ -1,0 +1,142 @@
+/* Osnovni stilovi za Contact Component */
+.contact-container {
+    position: fixed;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: white;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+    max-width: 20rem;
+    z-index: 50;
+    margin-top: 1rem;
+    padding: 1.5rem;
+}
+
+.contact-container:hover {
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.contact-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.contact-header-icon {
+    background-color: #ebf8ff;
+    border-radius: 50%;
+    padding: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-header-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #1a202c;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.2s ease;
+}
+
+.contact-item:hover {
+    background-color: #f9fafb;
+}
+
+.contact-item-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-item-text {
+    font-size: 0.875rem;
+    color: #718096;
+}
+
+.contact-item-value {
+    font-weight: 500;
+    color: #1a202c;
+    transition: color 0.2s ease;
+}
+
+.contact-item-value:hover {
+    color: #3182ce;
+}
+
+.contact-action {
+    margin-top: 1.5rem;
+}
+
+.contact-action-button {
+    width: 100%;
+    background-color: #3182ce;
+    color: white;
+    font-weight: 500;
+    padding: 0.625rem 1rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border: none;
+    cursor: pointer;
+}
+
+.contact-action-button:hover {
+    background-color: #2b6cb0;
+}
+
+/* Responzivnost */
+
+/* Ekrani ispod 1024px (Laptop i manji) */
+@media (max-width: 1024px) {
+    .contact-container {
+        right: 0.5rem;
+        max-width: 18rem;
+    }
+}
+
+/* Ekrani ispod 1120px (Tablet) */
+@media (max-width: 1130px) {
+    .contact-container {
+        position: relative;
+        top: auto;
+        transform: none;
+        margin: 1rem auto;
+        width: 100%;
+        max-width: 20rem;
+        padding: 1rem;
+    }
+}
+
+/* Ekrani ispod 640px (Mobilni uređaji) */
+@media (max-width: 640px) {
+    .contact-header-title {
+        font-size: 1rem;
+    }
+
+    .contact-item-value {
+        font-size: 0.875rem;
+    }
+
+    .contact-item-text {
+        font-size: 0.75rem;
+    }
+
+    .contact-action-button {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.875rem;
+    }
+}

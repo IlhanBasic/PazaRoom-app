@@ -1,25 +1,25 @@
 @section('title', 'Uslovi korišćenja')
 <x-layout>
-    <div class="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 py-12 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg overflow-hidden">
-            <div class="px-6 py-8 sm:px-12">
-                <h1 class="text-3xl font-bold text-gray-900 mb-8 border-b pb-4">Uslovi Korišćenja</h1>
+    <div class="uslovi-container">
+        <div class="uslovi-box">
+            <div class="uslovi-content">
+                <h1 class="uslovi-title">Uslovi Korišćenja</h1>
 
-                <div class="space-y-6 text-gray-700">
-                    <section class="space-y-4">
-                        <h2 class="text-2xl font-semibold text-gray-800">1. Opšte odredbe</h2>
-                        <p class="leading-relaxed">
+                <div class="uslovi-sections">
+                    <section class="uslovi-section">
+                        <h2 class="uslovi-subtitle">1. Opšte odredbe</h2>
+                        <p class="uslovi-text">
                             Korišćenjem naše platforme prihvatate sve navedene uslove korišćenja. Molimo vas da ih
                             pažljivo pročitate pre nego što počnete sa korišćenjem naših usluga.
                         </p>
                     </section>
 
-                    <section class="space-y-4">
-                        <h2 class="text-2xl font-semibold text-gray-800">2. Usluge</h2>
-                        <p class="leading-relaxed">
+                    <section class="uslovi-section">
+                        <h2 class="uslovi-subtitle">2. Usluge</h2>
+                        <p class="uslovi-text">
                             Naša platforma omogućava:
                         </p>
-                        <ul class="list-disc pl-6 space-y-2">
+                        <ul class="uslovi-list">
                             <li>Pretragu smeštaja za studente</li>
                             <li>Povezivanje stanodavaca i studenata</li>
                             <li>Objavu oglasa za izdavanje</li>
@@ -27,12 +27,12 @@
                         </ul>
                     </section>
 
-                    <section class="space-y-4">
-                        <h2 class="text-2xl font-semibold text-gray-800">3. Pravila korišćenja</h2>
-                        <p class="leading-relaxed">
+                    <section class="uslovi-section">
+                        <h2 class="uslovi-subtitle">3. Pravila korišćenja</h2>
+                        <p class="uslovi-text">
                             Korisnici se obavezuju da će:
                         </p>
-                        <ul class="list-disc pl-6 space-y-2">
+                        <ul class="uslovi-list">
                             <li>Pružati tačne i istinite informacije</li>
                             <li>Poštovati prava drugih korisnika</li>
                             <li>Ne zloupotrebljavati platformu</li>
@@ -40,41 +40,41 @@
                         </ul>
                     </section>
 
-                    <section class="space-y-4">
-                        <h2 class="text-2xl font-semibold text-gray-800">4. Odgovornost</h2>
-                        <p class="leading-relaxed">
+                    <section class="uslovi-section">
+                        <h2 class="uslovi-subtitle">4. Odgovornost</h2>
+                        <p class="uslovi-text">
                             Ne snosimo odgovornost za:
                         </p>
-                        <ul class="list-disc pl-6 space-y-2">
+                        <ul class="uslovi-list">
                             <li>Tačnost informacija koje objavljuju korisnici</li>
                             <li>Kvalitet smeštaja</li>
                             <li>Sporove između korisnika</li>
                         </ul>
                     </section>
 
-                    <section class="space-y-4">
-                        <h2 class="text-2xl font-semibold text-gray-800">5. Prekid usluga</h2>
-                        <p class="leading-relaxed">
+                    <section class="uslovi-section">
+                        <h2 class="uslovi-subtitle">5. Prekid usluga</h2>
+                        <p class="uslovi-text">
                             Zadržavamo pravo da:
                         </p>
-                        <ul class="list-disc pl-6 space-y-2">
+                        <ul class="uslovi-list">
                             <li>Suspendujemo naloge koji krše pravila</li>
                             <li>Izmenimo ili ukinemo usluge</li>
                             <li>Ažuriramo uslove korišćenja</li>
                         </ul>
                     </section>
 
-                    <section class="space-y-4 mt-8">
-                        <h2 class="text-2xl font-semibold text-gray-800">6. Rešavanje sporova</h2>
-                        <p class="leading-relaxed">
+                    <section class="uslovi-section uslovi-last-section">
+                        <h2 class="uslovi-subtitle">6. Rešavanje sporova</h2>
+                        <p class="uslovi-text">
                             Svi sporovi će se rešavati u skladu sa važećim zakonima Republike Srbije, pred nadležnim
                             sudom.
                         </p>
                     </section>
                 </div>
 
-                <div class="mt-12 pt-8 border-t">
-                    <p class="text-sm text-gray-500">
+                <div class="uslovi-footer">
+                    <p class="uslovi-footer-text">
                         Poslednje ažuriranje: {{now()->toFormattedDateString()}}.
                     </p>
                 </div>
@@ -82,3 +82,4 @@
         </div>
     </div>
 </x-layout>
+<link rel="stylesheet" href="{{ asset('css/conditions.css') }}">

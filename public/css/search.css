@@ -39,3 +39,97 @@
     animation: slideLeft 0.5s ease-out forwards;
     animation-delay: var(--delay, 0ms);
 }
+
+.search-form {
+    width: 100%;
+}
+
+.search-container {
+    position: relative;
+    border: 2px solid #E5E7EB;
+    margin: 16px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.search-container:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border-color: #60A5FA;
+}
+
+.search-icon {
+    position: absolute;
+    top: 16px;
+    left: 12px;
+}
+
+.search-icon i {
+    color: #A1A1A1;
+    transition: color 0.3s ease;
+}
+
+.search-icon:hover i {
+    color: #3B82F6;
+}
+
+.search-input {
+    height: 56px;
+    width: 100%;
+    padding-left: 40px;
+    padding-right: 90px;
+    border-radius: 8px;
+    border: none;
+    background-color: white;
+    color: #1F2937;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.search-input:hover {
+    border-color: #60A5FA;
+}
+
+.search-input:focus {
+    outline: none;
+}
+
+.search-button-container {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+}
+
+.search-button {
+    height: 40px;
+    width: 80px;
+    background-color: #3B82F6;
+    color: white;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.search-button:hover {
+    background-color: #2563EB;
+}
+
+@media (max-width: 480px) {
+    .search-container {
+        margin: 8px;
+    }
+    
+    .search-input {
+        font-size: 14px;
+        padding-right: 85px;
+    }
+    
+    .search-button {
+        width: 70px;
+        font-size: 14px;
+    }
+    
+    .search-icon {
+        top: 18px;
+    }
+}

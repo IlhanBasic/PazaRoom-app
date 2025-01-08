@@ -1,0 +1,72 @@
+/* General body and container styles */
+.uslovi-container {
+    min-height: 100vh;
+    background: linear-gradient(to bottom right, #f9fafb, #e5e7eb);
+    padding: 3rem 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.uslovi-box {
+    max-width: 960px;
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 1rem;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.uslovi-content {
+    padding: 2rem;
+}
+
+.uslovi-title {
+    font-size: 2.25rem;
+    font-weight: bold;
+    color: #111827;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid #e5e7eb;
+    padding-bottom: 0.5rem;
+}
+
+.uslovi-sections {
+    color: #4b5563;
+}
+
+.uslovi-section {
+    margin-bottom: 1.5rem;
+}
+
+.uslovi-subtitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 0.5rem;
+}
+
+.uslovi-text {
+    line-height: 1.75;
+    font-size: 1rem;
+    color: #6b7280;
+    margin-bottom: 1rem;
+}
+
+.uslovi-list {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.uslovi-footer {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid #e5e7eb;
+}
+
+.uslovi-footer-text {
+    font-size: 0.875rem;
+    color: #6b7280;
+    text-align: center;
+}

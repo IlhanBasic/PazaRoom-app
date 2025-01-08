@@ -1,3 +1,135 @@
+/* General Container */
+.login-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(to right, white, #3182ce);
+}
+
+.login-form-container {
+    display: flex;
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 75%;
+    max-width: 600px;
+    animation: slideIn 0.8s ease-out forwards;
+    transform: scale(1.02);
+    transition: all 0.3s ease-out;
+}
+
+.login-form-container:hover {
+    transform: scale(1.02);
+}
+
+/* Form Section */
+.form-section {
+    width: 100%;
+    padding: 2rem;
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+.form-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #2d3748; /* Dark Gray */
+    animation: slideDown 0.5s ease-out forwards;
+}
+
+.input-field {
+    margin-bottom: 1.5rem;
+    animation: slideRight 0.5s ease-out forwards;
+    animation-delay: var(--delay, 0ms);
+}
+
+.input-label {
+    display: block;
+    font-size: 0.875rem;
+    color: #4a5568; /* Darker Gray */
+    margin-bottom: 0.5rem;
+}
+
+.input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 0.375rem;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+.input:focus {
+    outline: none;
+    border-color: #3182ce;
+    box-shadow: 0 0 0 2px rgba(49, 130, 206, 0.5);
+}
+
+.error-message {
+    color: #f56565;
+    font-size: 0.875rem;
+    animation: shake 0.5s ease-in-out;
+}
+
+.submit-button {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #3182ce;
+    color: white;
+    font-weight: bold;
+    border-radius: 0.375rem;
+    transition: all 0.3s ease-out;
+    cursor: pointer;
+    transform: translateY(0);
+    animation: slideUp 0.5s ease-out forwards;
+    animation-delay: var(--delay, 0ms);
+}
+
+.submit-button:hover {
+    background-color: #2b6cb0;
+    transform: scale(1.05);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.register-link {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.875rem;
+    color: #4a5568;
+    animation: fadeIn 0.5s ease-out forwards;
+    animation-delay: var(--delay, 0ms);
+}
+
+.register-text {
+    color: #3182ce;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+.register-text:hover {
+    color: #2b6cb0;
+    text-decoration: underline;
+}
+
+/* Image Section */
+.image-section {
+    display: none;
+    width: 50%;
+    background-size: cover;
+    background-position: center;
+    animation: kenburns 20s ease-in-out infinite;
+}
+
+@media (min-width: 768px) {
+    .image-section {
+        display: block;
+    }
+}
+
+/* Animations */
 @keyframes slideIn {
     from { transform: translateX(-100%); opacity: 0; }
     to { transform: translateX(0); opacity: 1; }
@@ -33,38 +165,4 @@
     0%, 100% { transform: translateX(0); }
     25% { transform: translateX(-5px); }
     75% { transform: translateX(5px); }
-}
-
-.animate-slideIn {
-    animation: slideIn 0.8s ease-out forwards;
-}
-
-.animate-kenburns {
-    animation: kenburns 20s ease-in-out infinite;
-}
-
-.animate-slideDown {
-    animation: slideDown 0.5s ease-out forwards;
-}
-
-.animate-slideRight {
-    opacity: 0;
-    animation: slideRight 0.5s ease-out forwards;
-    animation-delay: var(--delay, 0ms);
-}
-
-.animate-slideUp {
-    opacity: 0;
-    animation: slideUp 0.5s ease-out forwards;
-    animation-delay: var(--delay, 0ms);
-}
-
-.animate-fadeIn {
-    opacity: 0;
-    animation: fadeIn 0.5s ease-out forwards;
-    animation-delay: var(--delay, 0ms);
-}
-
-.animate-shake {
-    animation: shake 0.5s ease-in-out;
 }

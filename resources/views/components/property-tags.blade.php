@@ -2,10 +2,11 @@
 @php
     $tags = explode(',', $tagsCsv);
 @endphp
-<ul class="flex flex-wrap gap-2 my-8">
+<ul class="tag-list">
     @foreach ($tags as $tag)
-        <li class="flex items-center justify-center bg-black text-white rounded-xl py-1 px-3 mr-2 text-xs">
+        <li class="tag-item">
             <a href="?tag={{ $tag }}">{{ $tag }}</a>
         </li>
     @endforeach
 </ul>
+<link rel="stylesheet" href="{{ asset('css/tags.css') }}">

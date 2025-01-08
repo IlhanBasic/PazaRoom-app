@@ -1,0 +1,84 @@
+/* Fade-in animation */
+.animate-fadeIn {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Container for filters */
+.filter-container {
+    border: 2px solid #E5E7EB;
+    margin: 16px 32px;
+    padding: 16px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.filter-container:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border-color: #60A5FA;
+}
+
+/* Form group styles */
+.form-group {
+    margin-bottom: 16px;
+}
+
+/* Label styles */
+.form-label {
+    display: block;
+    color: #4B5563;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+/* Select and input styles */
+.form-select,
+.form-input {
+    width: calc(100% - 16px);
+    border: 1px solid #D1D5DB;
+    border-radius: 8px;
+    padding: 8px;
+    font-size: 16px;
+    color: #1F2937;
+    transition: all 0.3s ease;
+}
+
+.form-select:hover,
+.form-input:hover {
+    border-color: #60A5FA;
+}
+
+.form-select:focus,
+.form-input:focus {
+    outline: none;
+    ring: none;
+    border-color: #3B82F6;
+}
+
+/* Input group styles for side-by-side inputs */
+.input-group {
+    display: flex;
+    gap: 16px;
+}
+
+/* Submit button styles */
+.submit-button {
+    height: 40px;
+    width: 128px;
+    background-color: #3B82F6;
+    color: white;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: #2563EB;
+    transform: scale(1.05);
+}

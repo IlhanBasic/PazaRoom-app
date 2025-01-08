@@ -1,0 +1,61 @@
+.sort-form {
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+    max-width: 100%;
+    overflow-x: hidden; 
+}
+
+.sort-select {
+    border: 1px solid #ccc;
+    padding: 8px;
+    border-radius: 8px;
+    font-size: 16px;
+    margin-right: 16px;
+    width: auto;
+    flex-grow: 1;
+}
+
+.sort-button {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 16px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.sort-button:hover {
+    background-color: #0056b3;
+}
+
+@media (max-width: 768px) {
+    .sort-select {
+        margin-right: 8px;
+        flex-basis: auto;
+    }
+
+    .sort-button {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 360px) {
+    .sort-form {
+        flex-direction: column; /* Stack items vertically */
+        padding: 8px; /* Add padding to prevent content from touching the edges */
+    }
+
+    .sort-select, .sort-button {
+        width: 100%; /* Make both select and button take full width */
+        margin-right: 0; /* Remove right margin */
+        margin-bottom: 8px; /* Space between the select and button */
+    }
+
+    .sort-button {
+        padding: 10px 12px; /* Adjust padding for smaller screens */
+    }
+}

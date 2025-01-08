@@ -271,7 +271,8 @@
                                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                                             {{ $user->role->name }}</td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
-                                            <form action="{{ route('delete_user', $user->id) }}" method="POST" id="delete-form-{{ $user->id }}"
+                                            <form action="{{ route('delete_user', $user->id) }}" method="POST"
+                                                id="delete-form-{{ $user->id }}"
                                                 class="delete-property-tag-form inline">
                                                 @csrf
                                                 @method('DELETE')
@@ -371,8 +372,8 @@
                                                 <i class="fas fa-edit"></i>
                                             </a>
                                             <form action="{{ route('property_delete', $property->id) }}"
-                                                id="delete-form-{{ $property->id }}"
-                                                method="POST" class="delete-property-tag-form inline">
+                                                id="delete-form-{{ $property->id }}" method="POST"
+                                                class="delete-property-tag-form inline">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" id="submit-button"
@@ -424,8 +425,8 @@
                                                 <i class="fas fa-edit"></i>
                                             </a>
                                             <form action="{{ route('property_tag_delete', $propertyTag->id) }}"
-                                                id="delete-form-{{ $propertyTag->id }}"
-                                                method="POST" class="delete-property-tag-form inline">
+                                                id="delete-form-{{ $propertyTag->id }}" method="POST"
+                                                class="delete-property-tag-form inline">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" id="submit-button"

@@ -1,3 +1,131 @@
+/* General layout */
+.registration-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem;
+    background: linear-gradient(to right, white, #60a5fa);
+    min-height: 100vh;
+}
+
+.registration-box {
+    display: flex;
+    background: white;
+    border-radius: 0.75rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 75%;
+    max-width: 700px;
+    transform: scale(1);
+    transition: transform 0.3s ease-out;
+}
+
+.registration-box:hover {
+    transform: scale(1.02);
+}
+
+.image-section {
+    width: 50%;
+    background-image: url('/images/register-photo.jpg');
+    background-size: cover;
+    background-position: center;
+    animation: kenburns 20s ease-in-out infinite;
+}
+
+.form-section {
+    width: 100%;
+    padding: 2rem;
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+.form-title {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    animation: slideDown 0.5s ease-out forwards;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.form-input-container {
+    animation: slideRight 0.5s ease-out forwards;
+    opacity: 0;
+}
+
+.form-input-container:nth-child(1) {
+    animation-delay: 100ms;
+}
+
+.form-input-container:nth-child(2) {
+    animation-delay: 200ms;
+}
+
+/* Add more for remaining inputs with increasing delay */
+
+.input-field {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 0.375rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease-in-out;
+}
+
+.input-field:focus {
+    border-color: transparent;
+    outline: none;
+    box-shadow: 0 0 0 2px #3b82f6;
+}
+
+.input-field:hover {
+    border-color: #60a5fa;
+}
+
+.submit-btn {
+    width: 100%;
+    background-color: #2563eb;
+    color: white;
+    padding: 0.75rem;
+    border-radius: 0.375rem;
+    transition: all 0.3s ease-out;
+    transform: scale(1);
+}
+
+.submit-btn:hover {
+    background-color: #1d4ed8;
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.submit-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #3b82f6;
+}
+
+.login-link {
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 0.875rem;
+    color: #4b5563;
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+.login-link a {
+    color: #2563eb;
+    transition: color 0.3s ease;
+}
+
+.login-link a:hover {
+    color: #1d4ed8;
+    text-decoration: underline;
+}
+
+/* Keyframe animations */
 @keyframes kenburns {
     0% { transform: scale(1) translate(0, 0); }
     50% { transform: scale(1.1) translate(-1%, -1%); }
@@ -14,11 +142,6 @@
     to { transform: translateX(0); opacity: 1; }
 }
 
-@keyframes slideUp {
-    from { transform: translateY(20px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-}
-
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
@@ -30,30 +153,9 @@
     75% { transform: translateX(5px); }
 }
 
-.animate-kenburns {
-    animation: kenburns 20s ease-in-out infinite;
-}
-
-.animate-slideDown {
-    animation: slideDown 0.5s ease-out forwards;
-}
-
-.animate-slideRight {
-    opacity: 0;
-    animation: slideRight 0.5s ease-out forwards;
-    animation-delay: var(--delay, 0ms);
-}
-
-.animate-slideUp {
-    animation: slideUp 0.5s ease-out forwards;
-}
-
-.animate-fadeIn {
-    opacity: 0;
-    animation: fadeIn 0.5s ease-out forwards;
-    animation-delay: var(--delay, 0ms);
-}
-
-.animate-shake {
+/* Error messages */
+.error-message {
+    color: #ef4444;
+    font-size: 0.875rem;
     animation: shake 0.5s ease-in-out;
 }

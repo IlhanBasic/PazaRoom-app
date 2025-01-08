@@ -1,0 +1,200 @@
+/* Property Card Container */
+.property-card {
+    display: flex;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    margin: 1rem 0;
+    max-width: 900px;
+}
+
+.property-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* Property Image */
+.property-image {
+    position: relative;
+    width: 300px;
+    min-width: 300px;
+    height: auto;
+}
+
+.property-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Property Details */
+.property-details {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+}
+
+/* Header Section */
+.header-section {
+    margin-bottom: 1rem;
+}
+
+.property-title {
+    font-size: 1.4rem;
+    color: #2d3748;
+    margin: 0 0 0.5rem 0;
+    line-height: 1.3;
+}
+
+/* Tags */
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.tag {
+    background: #e2e8f0;
+    color: #4a5568;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+}
+
+/* Location */
+.location {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #718096;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+}
+
+.location i {
+    color: #4a5568;
+}
+
+/* Price */
+.price {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 1rem;
+}
+
+.price-per-month {
+    font-size: 1rem;
+    color: #718096;
+    font-weight: normal;
+}
+
+/* Action Buttons */
+.action-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: auto;
+}
+
+.details-button, .delete-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.details-button {
+    background: #3182ce;
+    color: white;
+}
+
+.details-button:hover {
+    background: #2c5282;
+}
+
+.delete-button {
+    background: #fff;
+    color: #e53e3e;
+    border: 1px solid #e53e3e;
+}
+
+.delete-button:hover {
+    background: #e53e3e;
+    color: white;
+}
+
+/* Declined State */
+.declined {
+    opacity: 0.8;
+}
+
+.declined-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .property-card {
+        flex-direction: column;
+        max-width: 400px;
+        margin: 1rem auto;
+    }
+
+    .property-image {
+        width: 100%;
+        min-width: 100%;
+        height: 200px;
+    }
+
+    .property-details {
+        padding: 1rem;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+    }
+
+    .details-button, .delete-button {
+        justify-content: center;
+    }
+}
+
+/* Additional Responsive Adjustments */
+@media (max-width: 480px) {
+    .property-title {
+        font-size: 1.2rem;
+    }
+
+    .price {
+        font-size: 1.3rem;
+    }
+
+    .tags {
+        gap: 0.3rem;
+    }
+
+    .tag {
+        font-size: 0.8rem;
+        padding: 0.2rem 0.5rem;
+    }
+}

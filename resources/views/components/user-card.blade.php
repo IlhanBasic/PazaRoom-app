@@ -1,23 +1,23 @@
 @props(['first_name', 'last_name', 'email', 'phone_number', 'role', 'rating', 'id'])
-<script src="{{asset('js/deleteButton.js')}}"></script>
-<div class="max-w-sm rounded overflow-hidden shadow-lg bg-white transition-transform transform hover:scale-105">
-    <div class="px-6 py-4">
-        <div class="font-bold text-xl mb-2 text-blue-600">{{ $first_name }} {{ $last_name }}</div>
-        <p class="text-gray-700 text-base">
+<script src="{{ asset('js/deleteButton.js') }}"></script>
+
+<div class="user-card">
+    <div class="user-card-content">
+        <div class="user-name">{{ $first_name }} {{ $last_name }}</div>
+        <p class="user-details">
             <strong>Email:</strong> {{ $email }}<br>
             <strong>Telefon:</strong> {{ $phone_number }}<br>
             <strong>Uloga:</strong> {{ $role }}<br>
         </p>
     </div>
-    <div class="flex justify-between px-6 pt-4 pb-2">
-        <a href="{{ route('show_user', $id) }}"
-            class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Detalji</a>
+    <div class="user-card-actions">
+        <a href="{{ route('show_user', $id) }}" class="details-button">Detalji</a>
 
-        <form action="{{ route('delete_user', $id) }}" method="POST" class="inline" id="delete-form-{{ $id }}">
+        <form action="{{ route('delete_user', $id) }}" method="POST" class="delete-form" id="delete-form-{{ $id }}">
             @csrf
             @method('DELETE')
-            <button type="submit"
-                class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Obrisi</button>
+            <button type="submit" class="delete-button">Obrisi</button>
         </form>
     </div>
 </div>
+<link rel="stylesheet" href="{{ asset('css/user-card.css') }}">

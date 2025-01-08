@@ -1,0 +1,70 @@
+.property-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    height: 160px;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    transition: all 0.3s ease;
+}
+
+.property-card:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.property-card-content {
+    flex: 1;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.property-title {
+    margin-bottom: 12px;
+}
+
+.property-title h3 {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #2D3748;
+}
+
+.property-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.details-button {
+    display: inline-flex;
+    align-items: center;
+    background-color: #3182CE;
+    color: white;
+    font-size: 0.875rem;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+}
+
+.details-button:hover {
+    background-color: #2B6CB0;
+}
+
+.delete-button {
+    display: inline-flex;
+    align-items: center;
+    background-color: #F56565;
+    color: white;
+    font-size: 0.875rem;
+    padding: 6px 12px;
+    border-radius: 6px;
+}
+
+.delete-button:hover {
+    background-color: #C53030;
+}
+

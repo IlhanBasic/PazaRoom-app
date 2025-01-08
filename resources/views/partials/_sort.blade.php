@@ -1,5 +1,6 @@
-<form action="{{ request()->routeIs('properties') ? route('properties') : route('home') }}" method="GET" class="flex items-center space-x-4 mb-6">
-    <select name="sort" class="border p-2 rounded-lg">
+<link rel="stylesheet" href="{{ asset('css/sort.css') }}">
+<form action="{{ request()->routeIs('properties') ? route('properties') : route('home') }}" method="GET" class="sort-form">
+    <select name="sort" class="sort-select">
         <option value="">Sortiraj po</option>
         <option value="newest" {{ request('sort') === 'newest' ? 'selected' : '' }}>Najnovije</option>
         <option value="oldest" {{ request('sort') === 'oldest' ? 'selected' : '' }}>Najstarije</option>
@@ -12,5 +13,5 @@
         <option value="type_asc" {{ request('sort') === 'type_asc' ? 'selected' : '' }}>Tip: Stan-Soba</option>
         <option value="type_desc" {{ request('sort') === 'type_desc' ? 'selected' : '' }}>Tip: Soba-Stan</option>
     </select>
-    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg">Primeni</button>
+    <button type="submit" class="sort-button">Primeni</button>
 </form>

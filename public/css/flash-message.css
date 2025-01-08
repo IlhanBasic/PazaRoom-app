@@ -1,0 +1,61 @@
+/* Osnovni stilovi za flash poruke */
+.flash-message {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    padding: 1rem 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    z-index: 50;
+    transition: all 0.3s ease-in-out;
+}
+
+.flash-message.success {
+    background-color: #38a169; /* Zelena za success */
+    color: white;
+}
+
+.flash-message.error {
+    background-color: #e53e3e; /* Crvena za error */
+    color: white;
+}
+
+.flash-message-icon {
+    font-size: 1.25rem;
+    margin-right: 0.5rem;
+}
+
+.flash-message-text {
+    font-size: 1rem;
+}
+
+/* Animacija za prikaz/skrivanje */
+.flash-message[style*="display: none"] {
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+}
+
+/* Responzivnost */
+
+/* Ekrani ispod 768px (Tablet i manji uređaji) */
+@media (max-width: 768px) {
+    .flash-message {
+        bottom: 0.5rem;
+        right: 0.5rem;
+        width: calc(100% - 2rem);
+        padding: 0.75rem 1rem;
+        font-size: 0.875rem;
+    }
+
+    .flash-message-icon {
+        font-size: 1rem;
+    }
+
+    .flash-message-text {
+        font-size: 0.875rem;
+    }
+}
