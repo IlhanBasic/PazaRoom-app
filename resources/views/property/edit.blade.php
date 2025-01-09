@@ -1,190 +1,173 @@
 @section('title', 'PazaRoom - Izmeni smeštaj')
 <x-layout>
-    <div class="container mx-auto py-8">
-        <h1 class="text-2xl font-semibold mb-4 text-center">Izmeni smeštaj</h1>
+    <div class="pz-container">
+        <h1 class="pz-title">Izmeni smeštaj</h1>
         <form action="{{ route('property_update', $property) }}" method="POST" enctype="multipart/form-data" id="form"
-            class="bg-white shadow-md rounded-lg p-6 space-y-6 md:space-y-8 border border-gray-200 mx-auto max-w-4xl">
+            class="pz-form">
             @csrf
             {{-- Izmeni status  --}}
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-center">
-                <label for="status" class="text-sm font-medium text-gray-700">Status</label>
-                <div class="md:col-span-3">
-                    <select name="status" id="status" required
-                        class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border">
+            <div class="pz-form-group">
+                <label for="status" class="pz-label">Status</label>
+                <div>
+                    <select name="status" id="status" required class="pz-select">
                         <option value="Active" {{ $property->status == 'Active' ? 'selected' : '' }}>Aktivan</option>
                         <option value="Inactive" {{ $property->status == 'Inactive' ? 'selected' : '' }}>Neaktivan
                         </option>
                     </select>
                     @error('status')
-                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                        <p class="pz-error">{{ $message }}</p>
                     @enderror
                 </div>
             </div>
 
             {{-- Naslov  --}}
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-center">
-                <label for="title" class="text-sm font-medium text-gray-700">Naslov</label>
-                <div class="md:col-span-3">
-                    <input type="text" name="title" id="title" required
-                        class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border"
+            <div class="pz-form-group">
+                <label for="title" class="pz-label">Naslov</label>
+                <div>
+                    <input type="text" name="title" id="title" required class="pz-input"
                         value="{{ $property->title }}" />
                     @error('title')
-                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                        <p class="pz-error">{{ $message }}</p>
                     @enderror
                 </div>
-
             </div>
+
             <!-- Tip smeštaja -->
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-center">
-                <label for="type" class="text-sm font-medium text-gray-700">Tip</label>
-                <div class="md:col-span-3">
-                    <select name="type" id="type" required
-                        class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border">
+            <div class="pz-form-group">
+                <label for="type" class="pz-label">Tip</label>
+                <div>
+                    <select name="type" id="type" required class="pz-select">
                         <option value="">Izaberite tip</option>
                         <option value="Stan" {{ $property->type == 'Stan' ? 'selected' : '' }}>Stan</option>
                         <option value="Soba" {{ $property->type == 'Soba' ? 'selected' : '' }}>Soba</option>
                     </select>
                     @error('type')
-                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                        <p class="pz-error">{{ $message }}</p>
                     @enderror
                 </div>
             </div>
 
             <!-- Vrsta smeštaja -->
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-center">
-                <label for="property_type" class="text-sm font-medium text-gray-700">Vrsta smeštaja</label>
-                <div class="md:col-span-3">
-                    <select name="property_type" id="property_type" required
-                        class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border">
+            <div class="pz-form-group">
+                <label for="property_type" class="pz-label">Vrsta smeštaja</label>
+                <div>
+                    <select name="property_type" id="property_type" required class="pz-select">
                         <option value="">Izaberite vrstu</option>
                         <option value="{{ $property->property_type }}" selected>{{ $property->property_type }}</option>
                     </select>
                     @error('property_type')
-                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                        <p class="pz-error">{{ $message }}</p>
                     @enderror
                 </div>
             </div>
+
             {{-- Opis  --}}
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-start">
-                <label for="description" class="text-sm font-medium text-gray-700">Opis</label>
-                <div class="md:col-span-3">
-                    <textarea name="description" id="description" rows="3" required
-                        class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border"
-                        value="{{ $property->description }}">
-                        {{ trim($property->description) }}
-                    </textarea>
+            <div class="pz-form-group">
+                <label for="description" class="pz-label">Opis</label>
+                <div>
+                    <textarea name="description" id="description" rows="3" required class="pz-textarea">{{ trim($property->description) }}</textarea>
                     @error('description')
-                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                        <p class="pz-error">{{ $message }}</p>
                     @enderror
                 </div>
             </div>
 
             {{-- Lokacija  --}}
-            <div class="container">
-                <h1>Dodaj lokaciju</h1>
-                <!-- Skrivena polja za adresu, latitudu i longitud -->
+            <div class="pz-map-container">
+                <h2 class="pz-label">Dodaj lokaciju</h2>
                 <input type="hidden" id="address" name="address" required value="{{ $property->address }}">
                 <input type="hidden" id="latitude" name="latitude" value="{{ $property->latitude }}">
                 <input type="hidden" id="longitude" name="longitude" value="{{ $property->longitude }}">
-                <!-- Mapa -->
-                <div id="map"></div>
-            </div>
-            @error('address')
-                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-            @enderror
-            <!-- Slike -->
-            <div class="mb-4">
-                <label for="images" class="block text-sm font-medium text-gray-700">Slike</label>
-                <input type="file" id="images" name="images[]" multiple
-                    class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100">
-                @error('images')
-                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                <div id="map" class="pz-map"></div>
+                @error('address')
+                    <p class="pz-error">{{ $message }}</p>
                 @enderror
+            </div>
 
-                <!-- Prikaz postojećih slika -->
-                @if ($property->images)
-                    <div class="mt-2">
-                        <h4 class="text-sm font-medium text-gray-700">Postojeće slike:</h4>
-                        <div class="flex flex-wrap gap-4 mt-2">
+            <!-- Slike -->
+            <div class="pz-form-group">
+                <label for="images" class="pz-label">Slike</label>
+                <div>
+                    <input type="file" id="images" name="images[]" multiple class="pz-input" />
+                    @error('images')
+                        <p class="pz-error">{{ $message }}</p>
+                    @enderror
+
+                    @if ($property->images)
+                        <div class="pz-image-grid">
                             @foreach (explode(',', $property->images) as $index => $image)
-                                <div class="flex flex-col items-center">
-                                    <img src="{{ asset('storage/' . $image) }}" alt="Slika"
-                                        class="h-16 w-16 object-cover rounded-md">
-                                    <label class="mt-1 text-xs text-gray-600">
+                                <div class="pz-image-item">
+                                    <img src="{{ asset('storage/' . $image) }}" alt="Slika" class="pz-image">
+                                    <label class="pz-checkbox-label">
                                         <input type="checkbox" name="delete_images[]" value="{{ $image }}">
                                         Obriši
                                     </label>
                                 </div>
                             @endforeach
                         </div>
-                    </div>
-                @endif
-
+                    @endif
+                </div>
             </div>
 
             {{-- Tagovi  --}}
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-center">
-                <label for="tags" class="text-sm font-medium text-gray-700">Tagovi</label>
-                <div class="md:col-span-3 flex flex-wrap gap-4 ">
+            <div class="pz-form-group">
+                <label class="pz-label">Tagovi</label>
+                <div class="pz-tag-grid">
                     @foreach ($tags as $tag)
-                        <div class="flex items-center mb-2">
+                        <div class="pz-tag-item">
                             <input type="checkbox" name="tags[]" id="tag-{{ $tag->id }}"
-                                value="{{ $tag->tag }}" class="mr-2">
-                            <label for="tag-{{ $tag->id }}"
-                                class="text-sm font-medium text-gray-700">{{ $tag->tag }}</label>
+                                value="{{ $tag->tag }}" class="pz-tag-checkbox">
+                            <label for="tag-{{ $tag->id }}" class="pz-label">{{ $tag->tag }}</label>
                         </div>
                     @endforeach
                     @error('tags')
-                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                        <p class="pz-error">{{ $message }}</p>
                     @enderror
                 </div>
             </div>
-            {{-- Povrsina  --}}
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-center">
-                    <label for="area" class="text-sm font-medium text-gray-700">Površina (m²)</label>
-                    <div class="md:col-span-3">
+
+            {{-- Površina i spratovi --}}
+            <div class="pz-grid-2">
+                <div class="pz-form-group">
+                    <label for="area" class="pz-label">Površina (m²)</label>
+                    <div>
                         <input type="number" name="area" id="area" min="1" step="1" required
-                            class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border"
-                            value="{{ $property->area }}" />
+                            class="pz-input" value="{{ $property->area }}" />
                         @error('area')
-                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                            <p class="pz-error">{{ $message }}</p>
                         @enderror
                     </div>
                 </div>
-                {{-- Broj spratova  --}}
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-center">
-                    <label for="floors" class="text-sm font-medium text-gray-700">Ukupan Broj Spratova</label>
-                    <div class="md:col-span-3">
+
+                <div class="pz-form-group">
+                    <label for="floors" class="pz-label">Ukupan Broj Spratova</label>
+                    <div>
                         <input type="number" name="floors" id="floors" min="1" step="1" required
-                            max="50" maxlength="2" value="{{ $property->floors }}"
-                            class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border" />
+                            max="50" maxlength="2" value="{{ $property->floors }}" class="pz-input" />
                         @error('floors')
-                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                            <p class="pz-error">{{ $message }}</p>
                         @enderror
                     </div>
                 </div>
-                {{-- Trentuni sprat  --}}
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-center">
-                    <label for="current_floor" class="text-sm font-medium text-gray-700">Sprat na kojem se
-                        nalazi</label>
-                    <div class="md:col-span-3">
+
+                <div class="pz-form-group">
+                    <label for="current_floor" class="pz-label">Sprat na kojem se nalazi</label>
+                    <div>
                         <input type="number" name="current_floor" id="current_floor" min="1" step="1"
                             max="50" maxlength="2" required value="{{ $property->current_floor }}"
-                            class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border" />
+                            class="pz-input" />
                         @error('current_floor')
-                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                            <p class="pz-error">{{ $message }}</p>
                         @enderror
                     </div>
                 </div>
             </div>
-            {{-- Grejanje i Mesecni troskovi --}}
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-center">
-                <label for="heating" class="text-sm font-medium text-gray-700">Grejanje</label>
-                {{-- Grejanje  --}}
-                <div class="md:col-span-3">
-                    <select name="heating" id="heating" required
-                        class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border">
+
+            {{-- Grejanje i Mesečni troškovi --}}
+            <div class="pz-form-group">
+                <label for="heating" class="pz-label">Grejanje</label>
+                <div>
+                    <select name="heating" id="heating" required class="pz-select">
                         <option value="Centralno" {{ $property->heating == 'Centralno' ? 'selected' : '' }}>Centralno
                             grejanje</option>
                         <option value="Struja" {{ $property->heating == 'Struja' ? 'selected' : '' }}>Električno
@@ -195,39 +178,36 @@
                         </option>
                     </select>
                     @error('heating')
-                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
-                </div>
-                {{-- Mesecni troskovi  --}}
-                <div class="md:col-span-3">
-                    <label for="monthly_utilities" class="text-sm font-medium text-gray-700">Mesecni troskovi
-                        (€)</label>
-                    <input type="number" name="monthly_utilities" id="monthly_utilities" min="0"
-                        step="1" placeholder="0.00" required
-                        class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border"
-                        value="{{ $property->monthly_utilities }}" />
-                    @error('monthly_utilities')
-                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                        <p class="pz-error">{{ $message }}</p>
                     @enderror
                 </div>
             </div>
+
+            <div class="pz-form-group">
+                <label for="monthly_utilities" class="pz-label">Mesečni troškovi (€)</label>
+                <div>
+                    <input type="number" name="monthly_utilities" id="monthly_utilities" min="0"
+                        step="1" placeholder="0.00" required class="pz-input"
+                        value="{{ $property->monthly_utilities }}" />
+                    @error('monthly_utilities')
+                        <p class="pz-error">{{ $message }}</p>
+                    @enderror
+                </div>
+            </div>
+
             {{-- Cena Najma --}}
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-center">
-                    <label for="rent_price" class="text-sm font-medium text-gray-700">Cena Najma (€)</label>
-                    <div class="md:col-span-3">
+            <div class="pz-grid-2">
+                <div class="pz-form-group">
+                    <label for="rent_price" class="pz-label">Cena Najma (€)</label>
+                    <div>
                         <input type="number" name="rent_price" id="rent_price" min="0" step="0.01"
-                            placeholder="0.00" required
-                            class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border"
-                            value="{{ $property->rent_price }}" />
+                            placeholder="0.00" required class="pz-input" value="{{ $property->rent_price }}" />
                         @error('rent_price')
-                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                            <p class="pz-error">{{ $message }}</p>
                         @enderror
                     </div>
                 </div>
-                <button id="submit-button"
-                    class="w-full bg-blue-600 text-white hover:bg-blue-500 rounded-md py-2 transition duration-200"
-                    type="submit">Potvrdite</button>
+                <button id="submit-button" class="pz-submit-button" type="submit">Potvrdite</button>
             </div>
         </form>
         @include('partials._loader')
@@ -235,33 +215,25 @@
     <script src="{{ asset('js/mapaRegister.js') }}"></script>
     <script src="{{ asset('js/loading.js') }}"></script>
     <script>
-        // Definicija zavisnih opcija
         const propertyOptions = {
             Stan: ['Garsonjera', 'Jednosoban', 'Dvosoban', 'Trosoban', '4+ soba'],
             Soba: ['Jednokrevetna', 'Dvokrevetna', 'Trokrevetna']
         };
 
-        // HTML elementi
         const typeSelect = document.getElementById('type');
         const propertyTypeSelect = document.getElementById('property_type');
 
-        // Funkcija za ažuriranje opcija
         function updatePropertyTypeOptions() {
             const selectedType = typeSelect.value;
             const options = propertyOptions[selectedType] || [];
-
-            // Sačuvaj trenutno selektovanu vrednost pre nego što obrišeš opcije
             const selectedOption = propertyTypeSelect.value;
 
-            // Očisti trenutne opcije
             propertyTypeSelect.innerHTML = '<option value="">Izaberite vrstu</option>';
 
-            // Dodaj nove opcije
             options.forEach(option => {
                 const opt = document.createElement('option');
                 opt.value = option;
                 opt.textContent = option;
-                // Postavi selektovanu opciju
                 if (option === selectedOption) {
                     opt.selected = true;
                 }
@@ -269,12 +241,11 @@
             });
         }
 
-        // Dodaj događaj za promenu tipa smeštaja
         typeSelect.addEventListener('change', updatePropertyTypeOptions);
 
-        // Inicijalizuj opcije prilikom učitavanja stranice (ako postoji prethodno stanje)
         document.addEventListener('DOMContentLoaded', () => {
             if (typeSelect.value) updatePropertyTypeOptions();
         });
     </script>
 </x-layout>
+<link rel="stylesheet" href="{{ asset('css/edit-property.css') }}">
