@@ -51,7 +51,21 @@
                             <i class="fa-solid fa-trash"></i>
                         </button>
                     </form>
+                    @elseif (auth()->check() && auth()->user()->role->name == 'Student')
+                    @php
+                        $isFavorite = $property->is_favorite();
+                    @endphp
+                    <form action="{{ $isFavorite ? route('destroy_favorite', ['id' => auth()->user()->id, 'favorite_id' => $property->id]) : route('store_favorite') }}" 
+                          method="POST" class="favorites-property-form" data-property-id="{{ $property->id }}">
+                        @csrf
+                        @method($isFavorite ? 'DELETE' : 'POST')
+                        <input type="hidden" name="property_id" value="{{ $property->id }}">
+                        <button type="submit" class="apply-button">
+                            <i class="fa-regular fa-heart {{ $isFavorite ? 'active' : '' }}"></i>
+                        </button>
+                    </form>
                 @endif
+                
             </div>
         @endif
 

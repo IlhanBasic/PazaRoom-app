@@ -112,4 +112,16 @@ class Property extends Model
     {
         return $this->reviews()->count();
     }
+    public function favorites()
+    {
+        return $this->hasMany(Favorite::class);
+    }
+    public function is_favorite()
+    {
+        $user = auth()->user();
+        if (!$user) {
+            return false;
+        }
+        return $this->favorites()->where('user_id', $user->id)->exists();
+    }
 }

@@ -198,3 +198,24 @@
         padding: 0.2rem 0.5rem;
     }
 }
+.favorites-property-form {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.favorites-property-form .apply-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.favorites-property-form .apply-button i {
+    color: #aaa; /* Neaktivna boja srca */
+}
+
+.favorites-property-form .apply-button:hover i,.favorites-property-form .apply-button .active {
+    color: red; /* Popunjeno srce kada je dodato u favorites */
+    font-weight: bold;
+}

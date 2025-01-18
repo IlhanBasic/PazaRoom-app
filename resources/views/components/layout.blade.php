@@ -45,17 +45,22 @@
             <!-- Menu -->
             <div class="hidden md:flex space-x-4 z-20">
                 <a href="{{ route('home') }}" class="text-gray-200 hover:text-white">Home </a>
+                <a href="{{ route('about') }}" class="text-gray-200 hover:text-white">About <i class="fas fa-info"></i>
+                </a>
+                <a href="{{ route('blogs') }}" class="text-gray-200 hover:text-white">Blog <i
+                        class="fas fa-newspaper"></i> </a>
+                <a href="{{ route('contact') }}" class="text-gray-200 hover:text-white">Kontakt <i
+                        class="fas fa-phone"></i> </a>
                 @if (Auth::check())
-                    @if(Auth::user()->role->name == 'Admin')
-                    <a href="{{ route('admin') }}"
-                        class="text-gray-200 hover:text-white">Dashboard <i class="fa-solid fa-wrench"></i></a>
+                    @if (Auth::user()->role->name == 'Admin')
+                        <a href="{{ route('admin') }}" class="text-gray-200 hover:text-white">Dashboard <i
+                                class="fa-solid fa-wrench"></i></a>
                     @endif
-                    @if(Auth::user()->role->name == 'Vlasnik')
-                    <a href="{{ route('owner_properties', Auth::user()) }}"
-                        class="text-gray-200 hover:text-white">Moj smeštaj <i
-                            class="fas fa-home"></i></a>
+                    @if (Auth::user()->role->name == 'Vlasnik')
+                        <a href="{{ route('owner_properties', Auth::user()) }}"
+                            class="text-gray-200 hover:text-white">Moj smeštaj <i class="fas fa-home"></i></a>
                     @endif
-                @endif  
+                @endif
 
                 @if (Auth::check())
                     <!-- User Dropdown -->
@@ -70,10 +75,14 @@
                             <a href="{{ route('show_user', Auth::user()->id) }}"
                                 class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Profil <i
                                     class="fas fa-user"></i></a>
-                            @if(Auth::user()->role->name == 'Vlasnik')
-                            <a href="{{ route('properties_create') }}"
-                                class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Dodaj smeštaj <i
-                                    class="fas fa-add"></i></a>
+                            @if (Auth::user()->role->name == 'Vlasnik')
+                                <a href="{{ route('properties_create') }}"
+                                    class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Dodaj smeštaj <i
+                                        class="fas fa-add"></i></a>
+                            @elseif(Auth::user()->role->name == 'Student')
+                                <a href="{{ route('favorites', Auth::user()) }}"
+                                    class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Favorites <i
+                                        class="fas fa-heart"></i></a>
                             @endif
                             <form action="{{ route('logout') }}" method="GET" style="display:inline;">
                                 @csrf
@@ -98,11 +107,17 @@
             class="md:hidden bg-white shadow-lg absolute w-full z-10 hidden transition-all duration-300 ease-in-out">
             <div class="flex flex-col p-4 space-y-2 z-10">
                 <a href="{{ route('home') }}" class="text-gray-800 hover:bg-gray-100 py-2 px-4 rounded">Home</a>
+                <a href="{{ route('about') }}" class="text-gray-800 hover:bg-gray-100 py-2 px-4 rounded">About <i
+                        class="fas fa-info"></i> </a>
+                <a href="{{ route('blogs') }}" class="text-gray-800 hover:bg-gray-100 py-2 px-4 rounded">Blog <i
+                        class="fas fa-newspaper"></i> </a>
+                <a href="{{ route('contact') }}" class="text-gray-800 hover:bg-gray-100 py-2 px-4 rounded">Kontakt <i
+                        class="fas fa-phone"></i> </a>
                 @if (Auth::check())
-                    @if(Auth::user()->role->name != 'Admin')
-                    <a href="{{ route('owner_properties', Auth::user()) }}"
-                        class="text-gray-800 hover:bg-gray-100 py-2 px-4 rounded">Moj smeštaj <i
-                            class="fas fa-home"></i></a>
+                    @if (Auth::user()->role->name != 'Admin')
+                        <a href="{{ route('owner_properties', Auth::user()) }}"
+                            class="text-gray-800 hover:bg-gray-100 py-2 px-4 rounded">Moj smeštaj <i
+                                class="fas fa-home"></i></a>
                     @endif
                 @endif
 
@@ -137,6 +152,7 @@
             <div class="flex justify-center space-x-4 mt-2">
                 <a href="{{ url('/policy') }}" class="text-gray600 hover:text-blue500">Politika privatnosti</a>
                 <a href="{{ url('/conditions') }}" class="text-gray600 hover:text-blue500">Uslovi korišćenja</a>
+                <a href="{{ url('/faq') }}" class="text-gray600 hover:text-blue500">FAQ</a>
             </div>
         </div>
     </footer>

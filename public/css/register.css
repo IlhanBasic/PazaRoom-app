@@ -159,3 +159,23 @@
     font-size: 0.875rem;
     animation: shake 0.5s ease-in-out;
 }
+@media (max-width: 512px) {
+    .image-section{
+        display: none;
+    }
+}
+@media (max-width: 768px) {
+    .registration-box {
+        flex-direction: column;
+        width: 90%;
+    }
+    
+    .form-section {
+        padding: 1rem;
+    }
+    
+    .form-title {
+        font-size: 1.5rem;
+    }
+    
+}

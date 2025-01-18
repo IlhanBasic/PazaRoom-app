@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Property;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -232,4 +233,67 @@ class UsersController extends Controller
         $request->session()->regenerateToken();
         return redirect('/properties')->with('success', 'Uspjesno ste se odjavili.');
     }
+    public function favorites()
+    {
+        $user = auth()->user();
+        if (!$user) {
+            return redirect()->route('login')->with('error', 'Morate biti prijavljeni.');
+        }
+    
+        // Preuzimamo omiljene nekretnine korisnika
+        $favorites = Property::whereHas('favorites', function ($query) use ($user) {
+            $query->where('user_id', $user->id);
+        })->paginate(10); // Dodaj paginaciju
+    
+        return view('user.favorites', ["favorites" => $favorites]);
+    }
+    
+    
+    public function store_favorite(Request $request)
+    {
+        $user = auth()->user();
+        if (!$user) {
+            return redirect()->back()->with('error', 'Morate biti prijavljeni.');
+        }
+    
+        if ($user->role_id != 2) { // Ispravljena logika
+            return redirect()->back()->with('error', 'Morate biti student.');
+        }
+    
+        $propertyId = $request->input('property_id');
+        if (!$propertyId) {
+            return redirect()->back()->with('error', 'Property ID je neophodan.');
+        }
+    
+        // Proveravamo da li je već dodato u favorite
+        if ($user->favorites()->where('property_id', $propertyId)->exists()) {
+            return redirect()->back()->with('info', 'Smeštaj je već u favoritima.');
+        }
+    
+        // Dodajemo u favorite
+        $user->favorites()->attach($propertyId);
+    
+        return redirect()->back()->with('success', 'Smeštaj je uspešno dodat u favorite.');
+    }
+    public function destroy_favorite($id, $favorite_id)
+    {
+        $user = auth()->user();
+        if (!$user) {
+            return redirect()->back()->with('error', 'Morate biti prijavljeni.');
+        }
+    
+        // Check if the favorite exists for the user
+        $favorite = $user->favorites()->find($favorite_id);
+    
+        if (!$favorite) {
+            return redirect()->back()->with('error', 'Favorite nije pronađen.');
+        }
+    
+        // Detach the favorite
+        $user->favorites()->detach($favorite_id);
+    
+        return redirect()->back()->with('success', 'Smeštaj je uspešno uklonjen iz favorite.');
+    }
+    
+    
 }

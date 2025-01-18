@@ -8,7 +8,8 @@
             <!-- Form Section -->
             <div class="form-section">
                 <h2 class="form-title">Registrujte se</h2>
-                <form action="{{ route('register_user') }}" method="POST" class="form" id="form">
+                <form action="{{ route('register') }}" method="POST" class="form">
+
                     @csrf
                     <div class="form-input-container">
                         <label for="first_name" class="label">Ime</label>

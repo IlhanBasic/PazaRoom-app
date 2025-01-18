@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="{{ asset('css/contact.css') }}">
+<link rel="stylesheet" href="{{ asset('css/contact-owner.css') }}">
 <div class="contact-container">
     <div class="contact-header">
         <div class="contact-header-icon">
