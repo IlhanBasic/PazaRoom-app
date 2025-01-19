@@ -23,7 +23,6 @@
                             <li>Pretragu smeštaja za studente</li>
                             <li>Povezivanje stanodavaca i studenata</li>
                             <li>Objavu oglasa za izdavanje</li>
-                            <li>Komunikaciju između korisnika</li>
                         </ul>
                     </section>
 

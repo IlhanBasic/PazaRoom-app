@@ -73,4 +73,11 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Property::class, 'favorites', 'user_id', 'property_id')->withTimestamps();
     }
+    public function messages()
+    {
+        return $this->hasMany(Message::class);
+    }
+    public function contact_messages(){
+        return $this->hasMany(Contact_Message::class);
+    }
 }

@@ -17,10 +17,7 @@
                     <section class="section">
                         <h2 class="section-title">2. Koje podatke prikupljamo</h2>
                         <ul class="list">
-                            <li>Osnovne podatke (ime, prezime, email adresa)</li>
-                            <li>Kontakt informacije</li>
-                            <li>Studentski status</li>
-                            <li>Preference za smeštaj</li>
+                            <li>Osnovne podatke (ime, prezime, email adresa, kontakt telefon)</li>
                         </ul>
                     </section>
 

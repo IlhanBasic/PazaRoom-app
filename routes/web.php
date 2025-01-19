@@ -1,8 +1,9 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BlogsController;
+use App\Http\Controllers\Contact_MessagesController;
+use App\Http\Controllers\MessagesController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\ReviewsController;
@@ -23,9 +24,12 @@ Route::get('/faq',function () {
 Route::get('/about',function () {
     return view('about');
 })->name('about');
-Route::get('/contact',function () {
-    return view('contact');
-})->name('contact');
+Route::prefix('contact')->group(function () {
+    Route::get('/', [Contact_MessagesController::class, 'contact'])->name('contact');
+    Route::post('/create', [Contact_MessagesController::class, 'store'])->name('contact_create');
+    Route::get('/{id}', [Contact_MessagesController::class, 'show'])->name('contact_show');
+    Route::delete('/destroy/{id}', [Contact_MessagesController::class, 'destroy'])->name('contact_delete')->middleware('auth');
+});
 Route::fallback(function () {
     return response()->view('errors.404', [], 404);
 });
@@ -76,14 +80,6 @@ Route::prefix('users')->group(function () {
 });
 Route::prefix('admin')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin')->middleware('auth');
-});
-Route::prefix('reservations')->group(function () {
-    Route::get('/', [ReservationController::class, 'index'])->name('reservations');
-    Route::get('/{id}', [ReservationController::class, 'create'])->name('reservation_create');
-    Route::post('/', [ReservationController::class, 'store'])->name('reservation_store');
-    Route::get('/{id}/edit', [ReservationController::class, 'edit'])->name('reservation_edit');
-    Route::patch('/update', [ReservationController::class, 'update'])->name('reservation_update');
-    Route::delete('/destroy/{id}', [ReservationController::class, 'destroy'])->name('reservation_delete');
 });
 Route::prefix('reviews')->group(function () {
     Route::get('/create/{id}', [ReviewsController::class, 'create'])->name('review_create')->middleware('auth');

@@ -7,26 +7,36 @@
         @php
             $faqSections = [
                 'Opšta pitanja' => [
-                    'Kako mogu rezervisati smeštaj?' => 'Rezervaciju možete izvršiti putem naše platforme nakon registracije.',
                     'Da li je registracija besplatna?' => 'Da, registracija je potpuno besplatna.',
-                    'Kako da kontaktiram vlasnika smeštaja?' => 'Vlasnika možete kontaktirati putem poruka na platformi.',
-                    'Kako funkcioniše sistem recenzija i ocena?' => 'Nakon boravka možete ostaviti recenziju i ocenu za smeštaj.',
-                    'Kako mogu prijaviti neprikladan sadržaj ili korisnika?' => 'Prijavu možete poslati putem opcije "Prijavi" na profilu korisnika ili oglasa.'
+                    'Kako da kontaktiram vlasnika smeštaja?' =>
+                        'Vlasnika možete kontaktirati putem naznačenih kontaktnih informacija u oglasu.',
+                    'Kako funkcioniše sistem recenzija i ocena?' =>
+                        'Nakon boravka možete ostaviti recenziju i ocenu za smeštaj.',
+                    'Kako mogu prijaviti neprikladan sadržaj ili korisnika?' =>
+                        'Prijavu možete poslati putem kontakt stranice gde će Vam biti prosleđen odgovor putem mejla u što kraćem roku.',
+                    'Kako mogu dodati smeštaj u svoje favorite?' =>
+                        'Kliknite na ikonu favorita pored oglasa da biste dodali smeštaj u svoju listu favorita.',
                 ],
                 'Korisnički nalozi' => [
-                    'Zaboravio/la sam lozinku, kako da je resetujem?' => 'Možete resetovati lozinku klikom na "Zaboravljena lozinka".',
                     'Kako mogu izmeniti svoje podatke?' => 'Podatke možete izmeniti u sekciji "Moj profil".',
-                    'Kako da izbrišem svoj nalog?' => 'Brisanje naloga možete zatražiti putem korisničke podrške.'
+                    'Kako da izbrišem svoj nalog?' => 'Brisanje naloga možete zatražiti putem kontakt stranice.',
                 ],
                 'Vlasnici smeštaja' => [
-                    'Kako da postavim svoj smeštaj na PazaRoom?' => 'Registrujte se kao vlasnik i pratite uputstva za dodavanje oglasa.',
-                    'Kako da uređujem ili brišem svoje oglase?' => 'Oglase možete uređivati ili brisati u sekciji "Moji oglasi".',
-                    'Kako funkcioniše sistem verifikacije vlasnika?' => 'Verifikacija uključuje potvrdu identiteta i vlasništva nad smeštajem.'
+                    'Kako da postavim svoj smeštaj na PazaRoom?' =>
+                        'Registrujte se kao vlasnik i odaberite sekciju "Dodaj smeštaj" te popuniti sva polja u formi.',
+                    'Kako da uređujem ili brišem svoje oglase?' =>
+                        'Oglase možete uređivati ili brisati u sekciji "Moji oglasi".',
+                    'Kako funkcioniše sistem verifikacije vlasnika?' =>
+                        'Administrator može odobriti ili odbiti zahtev za postavljanje oglasa u zavisnosti od ispravnosti prosleđenog dokumenta o vlasništvu objekta.',
+                    'Mogu li postaviti više od jednog smeštaja?' =>
+                        'Da, možete postaviti više smeštaja, svaki sa posebnim oglasom.',
                 ],
                 'Tehnička podrška' => [
-                    'Stranica se ne učitava ispravno, šta da radim?' => 'Pokušajte osvežiti stranicu ili obrisati keš memoriju.',
-                    'Ne mogu da pošaljem poruku vlasniku, kako da rešim problem?' => 'Proverite internet konekciju i pokušajte ponovo.'
-                ]
+                    'Stranica se ne učitava ispravno, šta da radim?' =>
+                        'Pokušajte osvežiti stranicu ili obrisati keš memoriju.',
+                    'Šta da radim ako ne mogu da pronađem odgovarajući smeštaj?' =>
+                        'Proverite da li ste koristili odgovarajuće filtre prilikom pretrage. Takođe, možete se obratiti vlasnicima direktno putem kontakt informacija u oglasima.',
+                ],
             ];
         @endphp
 

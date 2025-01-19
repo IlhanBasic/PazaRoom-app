@@ -33,7 +33,7 @@
             </div>
 
             <!-- Hamburger Icon -->
-            <button class="hamburger" id="hamburger" onclick="toggleMenu()" >
+            <button class="hamburger" id="hamburger" onclick="toggleMenu()">
                 <i class="fas fa-bars"></i>
             </button>
 
@@ -66,12 +66,11 @@
 
                 @if (Auth::check())
                     <!-- User Dropdown -->
-                    <div x-data="{ open: false }" class="user-dropdown">
-                        <button @click="open = !open" class="dropdown-button">
+                    <div class="user-dropdown">
+                        <button id="dropdownButton" class="dropdown-button">
                             Korisnik <i class="fas fa-user-circle icon"></i>
                         </button>
-                        <div x-show.transition.opacity.duration.300ms="open" @click.away="open = false"
-                            class="dropdown-menu" style="display: none;">
+                        <div id="dropdownMenu" class="dropdown-menu" style="display: none;">
                             <a href="{{ route('show_user', Auth::user()->id) }}" class="dropdown-item">
                                 Profil <i class="fas fa-user icon"></i>
                             </a>
@@ -84,12 +83,9 @@
                                     Favorites <i class="fas fa-heart icon"></i>
                                 </a>
                             @endif
-                            <form action="{{ route('logout') }}" method="GET" style="display:inline;">
-                                @csrf
-                                <button type="submit" class="dropdown-item">
-                                    Odjavi se <i class="fas fa-sign-out-alt icon"></i>
-                                </button>
-                            </form>
+                            <a href="{{ route('logout') }}" class="dropdown-item">
+                                Odjavi se <i class="fas fa-sign-out-alt icon"></i>
+                            </a>
                         </div>
                     </div>
                 @else
@@ -118,10 +114,16 @@
                 <a href="{{ route('contact') }}" class="mobile-link">
                     Kontakt <i class="fas fa-phone icon"></i>
                 </a>
+
                 @if (Auth::check())
                     @if (Auth::user()->role->name != 'Admin')
                         <a href="{{ route('owner_properties', Auth::user()) }}" class="mobile-link">
                             Moj smeštaj <i class="fas fa-home icon"></i>
+                        </a>
+                    @endif
+                    @if (Auth::user()->role->name == 'Admin')
+                        <a href="{{ route('admin') }}" class="mobile-link">
+                            Dashboard <i class="fa-solid fa-wrench icon"></i>
                         </a>
                     @endif
                 @endif
@@ -130,12 +132,9 @@
                     <a href="{{ route('show_user', Auth::user()->id) }}" class="mobile-link">
                         Profil <i class="fas fa-user icon"></i>
                     </a>
-                    <form action="{{ route('logout') }}" method="POST" style="display:inline;">
-                        @csrf
-                        <button type="submit" class="mobile-link">
-                            Odjavi se <i class="fas fa-sign-out-alt icon"></i>
-                        </button>
-                    </form>
+                    <a href="{{ route('logout') }}" class="mobile-link">
+                        Odjavi se <i class="fas fa-sign-out-alt icon"></i>
+                    </a>
                 @else
                     <a href="{{ route('login') }}" class="mobile-link">
                         Prijava <i class="fas fa-sign-in-alt icon"></i>
@@ -156,7 +155,7 @@
     <!-- Podnožje -->
     <footer class="footer">
         <div class="footer-container">
-            <p class="footer-text">&copy; {{ date('Y') }} Izdavanje Stanova. Sva prava zadržana.</p>
+            <p class="footer-text">&copy; {{ date('Y') }} Izdavanje Stanova. Sva prava zadržana PazaRoom.</p>
             <div class="footer-links">
                 <a href="{{ url('/policy') }}" class="footer-link">Politika privatnosti</a>
                 <a href="{{ url('/conditions') }}" class="footer-link">Uslovi korišćenja</a>
@@ -170,7 +169,30 @@
             'resizeDuration': 200,
             'wrapAround': true
         })
-    </script>    
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const dropdownButton = document.getElementById('dropdownButton');
+            const dropdownMenu = document.getElementById('dropdownMenu');
+
+            // Toggle dropdown visibility
+            dropdownButton.addEventListener('click', function() {
+                if (dropdownMenu.style.display === 'none' || dropdownMenu.style.display === '') {
+                    dropdownMenu.style.display = 'block';
+                } else {
+                    dropdownMenu.style.display = 'none';
+                }
+            });
+
+            // Close dropdown if clicking outside
+            document.addEventListener('click', function(event) {
+                if (!dropdownButton.contains(event.target) && !dropdownMenu.contains(event.target)) {
+                    dropdownMenu.style.display = 'none';
+                }
+            });
+        });
+    </script>
+
     <script src="{{ asset('js/scrollButton.js') }}"></script>
 </body>
 

@@ -20,7 +20,7 @@
                 </div>
                 <div class="about-content">
                     <h2>Naša Misija</h2>
-                    <p class="mission-text">PazaRoom je stvoren da revolucionarizuje način na koji studenti pronalaze svoj idealni smeštaj. Kroz inovativnu tehnologiju i posvećenost kvalitetu, stvaramo mostove između studenata i proverenih stanodavaca.</p>
+                    <p class="mission-text">PazaRoom je stvoren da revolucionarizuje način na koji studenti pronalaze svoj idealni smeštaj na teritoriji grada Novog Pazara. Kroz inovativnu tehnologiju i posvećenost kvalitetu, stvaramo mostove između studenata i proverenih stanodavaca.</p>
                     
                     <div class="features">
                         <div class="feature-item">
@@ -34,14 +34,15 @@
                             <p>100% provereni oglasi i stanodavci</p>
                         </div>
                         <div class="feature-item">
-                            <div class="feature-icon">💬</div>
-                            <h3>Brza Komunikacija</h3>
-                            <p>Direktan kontakt sa stanodavcima</p>
+                            <div class="feature-icon">📍</div>
+                            <h3>Lokacija</h3>
+                            <p>Detaljne informacije o lokaciji smeštaja u Novom Pazaru</p>
                         </div>
+                        
                         <div class="feature-item">
                             <div class="feature-icon">💬</div>
                             <h3>Brza Komunikacija</h3>
-                            <p>Direktan kontakt sa stanodavcima</p>
+                            <p>Kontakt informacije stanodavaca</p>
                         </div>
                     </div>
                 </div>

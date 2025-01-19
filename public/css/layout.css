@@ -66,6 +66,9 @@
 /* User Dropdown */
 .user-dropdown {
   position: relative;
+  display: flex; 
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .dropdown-button {
@@ -82,7 +85,9 @@
   right: 0;
   top: 100%;
   margin-top: 0.5rem;
+  padding-bottom:0.5rem ;
   width: 12rem;
+  height:max-content;
   background: white;
   border-radius: 0.375rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -230,7 +235,6 @@ body {
   border: 1px solid #ccc;
   border-radius: 5px;
 }
-
 /* Links */
 a:hover {
   text-decoration: none;

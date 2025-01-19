@@ -31,7 +31,7 @@
                             </div>
                             <div class="method-content">
                                 <h3>Telefon</h3>
-                                <p>+381 11 123 4567</p>
+                                <p>+381 60 1234 567</p>
                             </div>
                         </div>
 
@@ -57,14 +57,14 @@
                             </div>
                             <div class="method-content">
                                 <h3>Adresa</h3>
-                                <p>Studentski trg 1, Beograd</p>
+                                <p>8 mart 97, Novi Pazar</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="contact-form-container">
-                    <form class="contact-form" action="#" method="POST">
+                    <form class="contact-form" action="{{route('contact_create')}}" method="POST">
                         @csrf
                         
                         @guest
@@ -78,7 +78,11 @@
                                 <input type="email" id="email" name="email" required placeholder="vasa@email.com">
                             </div>
                         @endguest
-
+                        @auth
+                            <input type="hidden" name="name" value="{{ auth()->user()->first_name }} {{ auth()->user()->last_name }}">
+                            <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
+                            <input type="hidden" name="email" value="{{ auth()->user()->email }}">
+                        @endauth
                         <div class="form-group">
                             <label for="subject">Naslov</label>
                             <input type="text" id="subject" name="subject" required placeholder="Tema vaše poruke">

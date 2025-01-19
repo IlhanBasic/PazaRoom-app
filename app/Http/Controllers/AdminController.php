@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Contact_Message;
 use App\Models\Role;
 use App\Models\User;
 use App\Models\Review;
@@ -22,6 +23,7 @@ class AdminController extends Controller
         $propertyTags = PropertyTags::all();
         $reviews = Review::all();
         $roles = Role::all();
-        return view('admin.dashboard',['users' => $users, 'properties' => $properties, 'propertyTags' => $propertyTags, 'reviews' => $reviews,'roles' => $roles]);
+        $messages = Contact_Message::all();
+        return view('admin.dashboard',['users' => $users, 'properties' => $properties, 'propertyTags' => $propertyTags, 'reviews' => $reviews,'roles' => $roles,'messages' => $messages]);
     }
 }

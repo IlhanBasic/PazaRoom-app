@@ -4,7 +4,7 @@
     <!-- Lista stanova -->
     <section class="property-list-section">
         <div class="property-container">
-            <h2 class="section-heading">Moji stanovi</h2>
+            <h2 class="section-heading">Moji smeštaji</h2>
             <div class="property">
                 @foreach ($properties as $stan)
                     <x-property-card :property="$stan" />
