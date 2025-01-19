@@ -11,130 +11,138 @@
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/layout.css') }}">
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <script src="{{ asset('js/toggleNavbar.js') }}" defer></script>
     <!-- Lightbox2 CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
     <!-- Lightbox2 JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
-
+    <link rel="stylesheet" href="{{ asset('css/layout.css') }}">
 </head>
 
-<body class="bg-gray-100 font-roboto">
-
+<body>
     <!-- Navigaciona traka -->
     <x-flash-message />
-    <nav class="bg-white shadow gradient-bg relative z-50">
-        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-            <div class="text-2xl font-bold text-white flex items-center">
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="nav-logo">
                 <a href="{{ route('home') }}">
-                    <img src="{{ asset('images/logo.png') }}" alt="logo" class="h-16 w-auto">
+                    <img src="{{ asset('images/logo.png') }}" alt="logo">
                 </a>
             </div>
 
             <!-- Hamburger Icon -->
-            <div class="md:hidden">
-                <button id="hamburger" class="text-white focus:outline-none" onclick="toggleMenu()">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
+            <button class="hamburger" id="hamburger" onclick="toggleMenu()" >
+                <i class="fas fa-bars"></i>
+            </button>
 
             <!-- Menu -->
-            <div class="hidden md:flex space-x-4 z-20">
-                <a href="{{ route('home') }}" class="text-gray-200 hover:text-white">Home </a>
-                <a href="{{ route('about') }}" class="text-gray-200 hover:text-white">About <i class="fas fa-info"></i>
+            <div class="nav-menu">
+                <a href="{{ route('home') }}" class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}">
+                    Home <i class="fa-solid fa-house-chimney icon"></i>
                 </a>
-                <a href="{{ route('blogs') }}" class="text-gray-200 hover:text-white">Blog <i
-                        class="fas fa-newspaper"></i> </a>
-                <a href="{{ route('contact') }}" class="text-gray-200 hover:text-white">Kontakt <i
-                        class="fas fa-phone"></i> </a>
+                <a href="{{ route('about') }}" class="nav-link {{ request()->routeIs('about') ? 'active' : '' }}">
+                    About <i class="fas fa-info icon"></i>
+                </a>
+                <a href="{{ route('blogs') }}" class="nav-link {{ request()->routeIs('blog') ? 'active' : '' }}">
+                    Blog <i class="fas fa-newspaper icon"></i>
+                </a>
+                <a href="{{ route('contact') }}" class="nav-link {{ request()->routeIs('contact') ? 'active' : '' }}">
+                    Kontakt <i class="fas fa-phone icon"></i>
+                </a>
                 @if (Auth::check())
                     @if (Auth::user()->role->name == 'Admin')
-                        <a href="{{ route('admin') }}" class="text-gray-200 hover:text-white">Dashboard <i
-                                class="fa-solid fa-wrench"></i></a>
+                        <a href="{{ route('admin') }}" class="nav-link">
+                            Dashboard <i class="fa-solid fa-wrench icon"></i>
+                        </a>
                     @endif
                     @if (Auth::user()->role->name == 'Vlasnik')
-                        <a href="{{ route('owner_properties', Auth::user()) }}"
-                            class="text-gray-200 hover:text-white">Moj smeštaj <i class="fas fa-home"></i></a>
+                        <a href="{{ route('owner_properties', Auth::user()) }}" class="nav-link">
+                            Moj smeštaj <i class="fas fa-home icon"></i>
+                        </a>
                     @endif
                 @endif
 
                 @if (Auth::check())
                     <!-- User Dropdown -->
-                    <div x-data="{ open: false }" class="relative">
-                        <button @click="open = !open"
-                            class="flex items-center text-gray-200 hover:text-white focus:outline-none">
-                            Korisnik <i class="fas fa-user-circle ml-2"></i>
+                    <div x-data="{ open: false }" class="user-dropdown">
+                        <button @click="open = !open" class="dropdown-button">
+                            Korisnik <i class="fas fa-user-circle icon"></i>
                         </button>
                         <div x-show.transition.opacity.duration.300ms="open" @click.away="open = false"
-                            class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-50"
-                            style="display: none;">
-                            <a href="{{ route('show_user', Auth::user()->id) }}"
-                                class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Profil <i
-                                    class="fas fa-user"></i></a>
+                            class="dropdown-menu" style="display: none;">
+                            <a href="{{ route('show_user', Auth::user()->id) }}" class="dropdown-item">
+                                Profil <i class="fas fa-user icon"></i>
+                            </a>
                             @if (Auth::user()->role->name == 'Vlasnik')
-                                <a href="{{ route('properties_create') }}"
-                                    class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Dodaj smeštaj <i
-                                        class="fas fa-add"></i></a>
+                                <a href="{{ route('properties_create') }}" class="dropdown-item">
+                                    Dodaj smeštaj <i class="fas fa-add icon"></i>
+                                </a>
                             @elseif(Auth::user()->role->name == 'Student')
-                                <a href="{{ route('favorites', Auth::user()) }}"
-                                    class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Favorites <i
-                                        class="fas fa-heart"></i></a>
+                                <a href="{{ route('favorites', Auth::user()) }}" class="dropdown-item">
+                                    Favorites <i class="fas fa-heart icon"></i>
+                                </a>
                             @endif
                             <form action="{{ route('logout') }}" method="GET" style="display:inline;">
                                 @csrf
-                                <button type="submit"
-                                    class="block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-100">
-                                    Odjavi se <i class="fas fa-sign-out-alt"></i>
+                                <button type="submit" class="dropdown-item">
+                                    Odjavi se <i class="fas fa-sign-out-alt icon"></i>
                                 </button>
                             </form>
                         </div>
                     </div>
                 @else
-                    <a href="{{ route('login') }}" class="text-gray-200 hover:text-white">Prijava <i
-                            class="fas fa-sign-in-alt"></i></a>
-                    <a href="{{ route('register') }}" class="text-gray-200 hover:text-white">Registracija <i
-                            class="fas fa-user-plus"></i></a>
+                    <a href="{{ route('login') }}" class="nav-link">
+                        Prijava <i class="fas fa-sign-in-alt icon"></i>
+                    </a>
+                    <a href="{{ route('register') }}" class="nav-link">
+                        Registracija <i class="fas fa-user-plus icon"></i>
+                    </a>
                 @endif
             </div>
         </div>
 
         <!-- Mobile Menu -->
-        <div id="mobile-menu"
-            class="md:hidden bg-white shadow-lg absolute w-full z-10 hidden transition-all duration-300 ease-in-out">
-            <div class="flex flex-col p-4 space-y-2 z-10">
-                <a href="{{ route('home') }}" class="text-gray-800 hover:bg-gray-100 py-2 px-4 rounded">Home</a>
-                <a href="{{ route('about') }}" class="text-gray-800 hover:bg-gray-100 py-2 px-4 rounded">About <i
-                        class="fas fa-info"></i> </a>
-                <a href="{{ route('blogs') }}" class="text-gray-800 hover:bg-gray-100 py-2 px-4 rounded">Blog <i
-                        class="fas fa-newspaper"></i> </a>
-                <a href="{{ route('contact') }}" class="text-gray-800 hover:bg-gray-100 py-2 px-4 rounded">Kontakt <i
-                        class="fas fa-phone"></i> </a>
+        <div id="mobile-menu" class="mobile-menu">
+            <div class="mobile-menu-items">
+                <a href="{{ route('home') }}" class="mobile-link">
+                    Home <i class="fa-solid fa-house-chimney icon"></i>
+                </a>
+                <a href="{{ route('about') }}" class="mobile-link">
+                    About <i class="fas fa-info icon"></i>
+                </a>
+                <a href="{{ route('blogs') }}" class="mobile-link">
+                    Blog <i class="fas fa-newspaper icon"></i>
+                </a>
+                <a href="{{ route('contact') }}" class="mobile-link">
+                    Kontakt <i class="fas fa-phone icon"></i>
+                </a>
                 @if (Auth::check())
                     @if (Auth::user()->role->name != 'Admin')
-                        <a href="{{ route('owner_properties', Auth::user()) }}"
-                            class="text-gray-800 hover:bg-gray-100 py-2 px-4 rounded">Moj smeštaj <i
-                                class="fas fa-home"></i></a>
+                        <a href="{{ route('owner_properties', Auth::user()) }}" class="mobile-link">
+                            Moj smeštaj <i class="fas fa-home icon"></i>
+                        </a>
                     @endif
                 @endif
 
                 @if (Auth::check())
-                    <a href="{{ route('show_user', Auth::user()->id) }}"
-                        class="text-gray-800 hover:bg-gray-100 py-2 px-4 rounded">Profil <i class="fas fa-user"></i>
+                    <a href="{{ route('show_user', Auth::user()->id) }}" class="mobile-link">
+                        Profil <i class="fas fa-user icon"></i>
                     </a>
                     <form action="{{ route('logout') }}" method="POST" style="display:inline;">
                         @csrf
-                        <button type="submit" class="text-gray-800 hover:bg-gray-100 py-2 px-4 rounded">Odjavi
-                            se <i class="fas fa-sign-out-alt"></i></button>
+                        <button type="submit" class="mobile-link">
+                            Odjavi se <i class="fas fa-sign-out-alt icon"></i>
+                        </button>
                     </form>
                 @else
-                    <a href="{{ route('login') }}"
-                        class="text-gray-800 hover:bg-gray-100 py-2 px-4 rounded">Prijava</a>
-                    <a href="{{ route('register') }}"
-                        class="text-gray-800 hover:bg-gray-100 py-2 px-4 rounded">Registracija</a>
+                    <a href="{{ route('login') }}" class="mobile-link">
+                        Prijava <i class="fas fa-sign-in-alt icon"></i>
+                    </a>
+                    <a href="{{ route('register') }}" class="mobile-link">
+                        Registracija <i class="fas fa-user-plus icon"></i>
+                    </a>
                 @endif
             </div>
         </div>
@@ -146,13 +154,13 @@
     </main>
 
     <!-- Podnožje -->
-    <footer class="bg-white shadow">
-        <div class="max-w-7xl mx-auto px-4 py-6 text-center">
-            <p class="text-gray-600">&copy; {{ date('Y') }} Izdavanje Stanova. Sva prava zadržana.</p>
-            <div class="flex justify-center space-x-4 mt-2">
-                <a href="{{ url('/policy') }}" class="text-gray600 hover:text-blue500">Politika privatnosti</a>
-                <a href="{{ url('/conditions') }}" class="text-gray600 hover:text-blue500">Uslovi korišćenja</a>
-                <a href="{{ url('/faq') }}" class="text-gray600 hover:text-blue500">FAQ</a>
+    <footer class="footer">
+        <div class="footer-container">
+            <p class="footer-text">&copy; {{ date('Y') }} Izdavanje Stanova. Sva prava zadržana.</p>
+            <div class="footer-links">
+                <a href="{{ url('/policy') }}" class="footer-link">Politika privatnosti</a>
+                <a href="{{ url('/conditions') }}" class="footer-link">Uslovi korišćenja</a>
+                <a href="{{ url('/faq') }}" class="footer-link">FAQ</a>
             </div>
         </div>
     </footer>
@@ -162,7 +170,7 @@
             'resizeDuration': 200,
             'wrapAround': true
         })
-    </script>
+    </script>    
     <script src="{{ asset('js/scrollButton.js') }}"></script>
 </body>
 

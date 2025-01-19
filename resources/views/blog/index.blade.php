@@ -6,7 +6,9 @@
             <div class="container">
                 <h1>Saveti za studente Blog</h1>
                 <p>Trikovi i saveti za studentski život, stanovanje, upravljanje novcem i još mnogo toga.</p><br>
-                <a href="{{ route('blog_create') }}" class="create-button">Kreiraj blog</a>
+                @if (Auth::check() && Auth::user()->role_id == 3)
+                    <a href="{{ route('blog_create') }}" class="create-button">Kreiraj blog</a>
+                @endif
             </div>
         </header>
         <main class="container">
@@ -28,6 +30,7 @@
                                 <span>{{ $blog['readTime'] }}</span>
                             </div>
                         </div>
+                        @if (Auth::check() && Auth::user()->role_id == 3)
                         <div class="action-buttons">
                             <a href="{{ route('blog_edit', $blog->id) }}" class="details-button">
                                 <span>Izmeni</span>
@@ -44,6 +47,7 @@
                                 </button>
                             </form>
                         </div>
+                        @endif
                     </article>
                 @endforeach
             </div>

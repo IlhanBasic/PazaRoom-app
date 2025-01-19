@@ -53,7 +53,7 @@ Route::prefix('blogs')->group(function () {
     Route::get('/create', [BlogsController::class, 'create'])->name('blog_create')->middleware('auth');
     Route::post('/store', [BlogsController::class, 'store'])->name('blog_store')->middleware('auth');
     Route::get('/{id}/edit', [BlogsController::class, 'edit'])->name('blog_edit')->middleware('auth');
-    Route::post('/update/{id}', [BlogsController::class, 'update'])->name('blog_update')->middleware('auth');
+    Route::patch('/update/{id}', [BlogsController::class, 'update'])->name('blog_update')->middleware('auth');
     Route::delete('/destroy/{id}', [BlogsController::class, 'destroy'])->name('blog_delete')->middleware('auth');
 });
 

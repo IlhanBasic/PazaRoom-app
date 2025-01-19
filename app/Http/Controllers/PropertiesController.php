@@ -343,15 +343,12 @@ class PropertiesController extends Controller
             return redirect('/')->with('error', 'Nemate pristup ovoj stranici.');
         }
         $property = Property::findOrFail($id);
-
-        // Opcionalno, obrišite slike sa servera pre brisanja zapisa iz baze
         if ($property->images) {
             $paths = explode(',', $property->images);
             foreach ($paths as $path) {
                 Storage::disk('public')->delete($path);
             }
         }
-
         $property->delete();
 
         return redirect('/properties')->with('success', 'Smeštaj uspešno obrisan.');

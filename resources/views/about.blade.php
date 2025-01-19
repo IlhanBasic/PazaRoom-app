@@ -58,10 +58,10 @@
             <div class="team-grid">
                 <div class="team-member">
                     <div class="member-image">
-                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80" alt="Jovan Jovanović">
+                        <img src="../images/man2.jpg" alt="Jovan Jovanović">
                     </div>
                     <div class="member-info">
-                        <h3>Jovan Jovanović</h3>
+                        <h3>Haris Bešić</h3>
                         <span class="position">Osnivač i CEO</span>
                         <p>Vizionar sa 10+ godina iskustva u tech industriji</p>
                     </div>
@@ -69,10 +69,10 @@
 
                 <div class="team-member">
                     <div class="member-image">
-                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80" alt="Marija Marković">
+                        <img src="../images/woman1.jpg" alt="Marija Marković">
                     </div>
                     <div class="member-info">
-                        <h3>Marija Marković</h3>
+                        <h3>Alida Suljević</h3>
                         <span class="position">Tehnička Direktorka</span>
                         <p>Stručnjak za razvoj i implementaciju inovativnih rešenja</p>
                     </div>
@@ -80,7 +80,7 @@
 
                 <div class="team-member">
                     <div class="member-image">
-                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80" alt="Nikola Nikolić">
+                        <img src="../images/man1.jpg" alt="Nikola Nikolić">
                     </div>
                     <div class="member-info">
                         <h3>Nikola Nikolić</h3>

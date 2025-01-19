@@ -13,11 +13,19 @@ header {
     position: relative;
     overflow: hidden;
     box-shadow: 0 4px 20px rgba(99, 102, 241, 0.2);
-    background-image: url("https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+    background-image: url("../images/blog-hero.jpg");
     background-size: cover;
     background-position: center;
+    animation: slideLeft 1s ease-out;
 }
-
+@keyframes slideLeft {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
 header::before {
     content: "";
     position: absolute;
