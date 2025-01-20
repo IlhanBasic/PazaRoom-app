@@ -14,13 +14,13 @@ return new class extends Migration
         Schema::create('properties', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('images')->nullable();
+            $table->text('images')->nullable();
             $table->text('description');
             $table->string('address');
             $table->decimal('latitude', 10, 8);
             $table->decimal('longitude', 11, 8);
             $table->foreignId('owner_id')->constrained('users')->onDelete('cascade');
-            $table->string('ownership_proof')->nullable();
+            $table->text('ownership_proof')->nullable();
             $table->string('tags')->nullable();
             $table->integer('area')->nullable();
             $table->integer('floors')->nullable();

@@ -27,14 +27,14 @@
         <!-- Sidebar -->
         <div :class="{ 'open': sidebarOpen }" class="sidebar">
             <div class="sidebar-content">
-                <h4>Admin Dashboard</h4>
+                <h4></h4>
                 <nav>
                     <a @click="setCurrentTab('acceptProperty')" :class="{ 'active': currentTab === 'acceptProperty' }"
                         class="sidebar-link">
                         <i class="fa-solid fa-check"></i>
                         <span>Proveri nekretninu</span>
                     </a>
-                    <a @click="setCurrentTab('contactMessages')" :class="{ 'active': currentTab === 'acceptProperty' }"
+                    <a @click="setCurrentTab('contactMessages')" :class="{ 'active': currentTab === 'contactMessages' }"
                         class="sidebar-link">
                         <i class="fa-solid fa-message"></i>
                         <span>Inbox</span>
@@ -101,7 +101,7 @@
                                         <td><a href="{{ route('property_show', $property->id) }}">
                                                 {{ Str::limit(route('property_show', $property->id), 30) }}</a>
                                         </td>
-                                        <td><a href="storage/{{ $property->ownership_proof }}">
+                                        <td><a href="{{ $property->ownership_proof }}">
                                                 {{ Str::limit($property->ownership_proof, 30) }}</a>
                                         </td>
                                         <td class="actions">

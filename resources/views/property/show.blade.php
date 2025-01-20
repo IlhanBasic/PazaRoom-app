@@ -15,9 +15,9 @@
                             <div class="swiper-wrapper">
                                 @foreach (explode(',', $property->images) as $image)
                                     <div class="swiper-slide">
-                                        <a href="{{ asset('storage/' . $image) }}" data-lightbox="apartment-gallery"
+                                        <a href="{{ asset($image) }}" data-lightbox="apartment-gallery"
                                             data-title="Apartment view">
-                                            <img src="{{ asset('storage/' . $image) }}" alt="Apartment view"
+                                            <img src="{{ asset($image) }}" alt="Apartment view"
                                                 class="gallery-img">
                                         </a>
                                     </div>

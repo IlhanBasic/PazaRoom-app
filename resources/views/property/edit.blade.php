@@ -98,7 +98,7 @@
                         <div class="pz-image-grid">
                             @foreach (explode(',', $property->images) as $index => $image)
                                 <div class="pz-image-item">
-                                    <img src="{{ asset('storage/' . $image) }}" alt="Slika" class="pz-image">
+                                    <img src="{{ asset($image) }}" alt="Slika" class="pz-image">
                                     <label class="pz-checkbox-label">
                                         <input type="checkbox" name="delete_images[]" value="{{ $image }}">
                                         Obriši

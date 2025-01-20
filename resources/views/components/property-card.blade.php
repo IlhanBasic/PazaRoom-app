@@ -3,7 +3,7 @@
 <div class="property-card {{ $property->status == 'Declined' ? 'declined' : '' }}">
     {{-- Property Image --}}
     <div class="property-image">
-        <img src="{{ $property['images'] ? asset('storage/' . explode(',', $property['images'])[0]) : asset('images/no-image.png') }}"
+        <img src="{{ $property['images'] ? asset(explode(',', $property['images'])[0]) : asset('images/no-image.png') }}"
             alt="{{ $property->title }}" class="image">
         @if ($property->status == 'Declined')
             <div class="declined-overlay">
