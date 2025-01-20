@@ -11,7 +11,6 @@
                 @endif
             </div>
         </header>
-        {{-- <main class="container"> --}}
         <main class="blog-container">
             <div class="blog-grid">
                 @if($blogs->isEmpty())
@@ -20,15 +19,15 @@
                 @foreach ($blogs as $blog)
                 
                     <article class="blog-card"
-                        onclick="window.location.href = '{{ asset('storage/' . $blog['file_link']) }}'">
-                        <img src="{{ asset('storage/' . $blog['image']) }}" alt="{{ $blog['title'] }}" class="card-image">
+                        onclick="window.location.href = '{{ asset($blog['file_link']) }}'">
+                        <img src="{{ asset( $blog['image']) }}" alt="{{ $blog['title'] }}" class="card-image">
                         <div class="card-content">
                             <span class="card-category">{{ $blog['category'] }}</span>
                             <h2 class="card-title">{{ $blog['title'] }}</h2>
                             <p class="card-excerpt">{{ $blog['excerpt'] }}</p>
                             <div class="card-meta">
                                 <span>{{ date('M d, Y', strtotime($blog['created_at'])) }}</span>
-                                <span>{{ $blog['readTime'] }}</span>
+                                <span>{{ $blog['read_time'] }} min</span>
                             </div>
                         </div>
                         @if (Auth::check() && Auth::user()->role_id == 3)
@@ -53,5 +52,8 @@
                 @endforeach
             </div>
         </main>
+        <div class="pagination">
+            {{ $blogs->links() }}
+        </div>
     </body>
 </x-layout>

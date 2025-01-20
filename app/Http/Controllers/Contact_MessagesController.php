@@ -12,9 +12,6 @@ class Contact_MessagesController extends Controller
     {
         return view('contact.contact');
     }
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $formData = $request->validate([
@@ -35,9 +32,6 @@ class Contact_MessagesController extends Controller
         ]);
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
         if (auth()->check() && auth()->user()->role_id == 3) {
@@ -46,10 +40,6 @@ class Contact_MessagesController extends Controller
         }
         return redirect('/')->with('error', 'Nemate pristup ovoj stranici.');
     }
-
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         if(!auth()->check() || auth()->user()->role_id != 3) {

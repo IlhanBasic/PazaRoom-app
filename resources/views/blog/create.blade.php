@@ -1,6 +1,5 @@
 @section('title', 'PazaRoom - Kreiraj blog')
 <x-layout>
-    <x-back-button />
     <link rel="stylesheet" href="{{ asset('css/create-blog.css') }}">
     <h1 class="page-title">Kreiraj blog</h1>
     <form action="{{ route('blog_store') }}" method="POST" enctype="multipart/form-data" class="create-blog-form">

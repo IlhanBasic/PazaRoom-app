@@ -69,6 +69,112 @@
     color: #4b5563;
 }
 
+/* Postojeći CSS ostaje isti, dodajemo novi na kraju */
+
+/* Pagination Styling */
 .pagination-wrapper {
-    margin: 2rem 1rem;
+    margin: 2rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.pagination {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.page-item {
+    margin: 0;
+}
+
+.page-link,
+.page-item span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.5rem;
+    height: 2.5rem;
+    padding: 0 0.75rem;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #4a5568;
+    background: #fff;
+    border: 2px solid #e2e8f0;
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.page-link:hover {
+    background: #f7fafc;
+    border-color: #cbd5e0;
+    color: #2d3748;
+}
+
+.page-item.active .page-link,
+.page-item.active span {
+    background: #4CAF50;
+    border-color: #4CAF50;
+    color: white;
+}
+
+.page-item.disabled .page-link,
+.page-item.disabled span {
+    background: #f7fafc;
+    border-color: #edf2f7;
+    color: #a0aec0;
+    cursor: not-allowed;
+}
+
+/* Arrows styling */
+.page-item:first-child .page-link,
+.page-item:last-child .page-link {
+    font-size: 1.1rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+    .pagination {
+        gap: 0.25rem;
+    }
+
+    .page-link,
+    .page-item span {
+        min-width: 2.25rem;
+        height: 2.25rem;
+        padding: 0 0.5rem;
+        font-size: 0.875rem;
+    }
+
+    /* Hide some page numbers on mobile */
+    .pagination .page-item:not(:first-child):not(:last-child):not(.active):not(.disabled) {
+        display: none;
+    }
+
+    /* Show ellipsis for better context */
+    .pagination .page-item:nth-last-child(2):not(.active)::before {
+        content: "...";
+        display: flex;
+        align-items: center;
+        padding: 0 0.5rem;
+        color: #a0aec0;
+    }
+}
+
+/* Extra small devices */
+@media (max-width: 360px) {
+    .page-link,
+    .page-item span {
+        min-width: 2rem;
+        height: 2rem;
+        padding: 0 0.4rem;
+        font-size: 0.8rem;
+    }
 }

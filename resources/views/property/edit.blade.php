@@ -6,7 +6,7 @@
         <form action="{{ route('property_update', $property) }}" method="POST" enctype="multipart/form-data" id="form"
             class="pz-form">
             @csrf
-            {{-- Izmeni status  --}}
+            {{-- Change Status  --}}
             <div class="pz-form-group">
                 <label for="status" class="pz-label">Status</label>
                 <div>
@@ -21,7 +21,7 @@
                 </div>
             </div>
 
-            {{-- Naslov  --}}
+            {{-- Title  --}}
             <div class="pz-form-group">
                 <label for="title" class="pz-label">Naslov</label>
                 <div>
@@ -33,7 +33,7 @@
                 </div>
             </div>
 
-            <!-- Tip smeštaja -->
+            <!-- Type -->
             <div class="pz-form-group">
                 <label for="type" class="pz-label">Tip</label>
                 <div>
@@ -48,7 +48,7 @@
                 </div>
             </div>
 
-            <!-- Vrsta smeštaja -->
+            <!-- Type Category -->
             <div class="pz-form-group">
                 <label for="property_type" class="pz-label">Vrsta smeštaja</label>
                 <div>
@@ -62,7 +62,7 @@
                 </div>
             </div>
 
-            {{-- Opis  --}}
+            {{-- Description  --}}
             <div class="pz-form-group">
                 <label for="description" class="pz-label">Opis</label>
                 <div>
@@ -73,7 +73,7 @@
                 </div>
             </div>
 
-            {{-- Lokacija  --}}
+            {{-- Location  --}}
             <div class="pz-map-container">
                 <h2 class="pz-label">Dodaj lokaciju</h2>
                 <input type="hidden" id="address" name="address" required value="{{ $property->address }}">
@@ -85,7 +85,7 @@
                 @enderror
             </div>
 
-            <!-- Slike -->
+            <!-- Images -->
             <div class="pz-form-group">
                 <label for="images" class="pz-label">Slike</label>
                 <div>
@@ -110,14 +110,15 @@
                 </div>
             </div>
 
-            {{-- Tagovi  --}}
+            {{-- Tags --}}
             <div class="pz-form-group">
                 <label class="pz-label">Tagovi</label>
                 <div class="pz-tag-grid">
                     @foreach ($tags as $tag)
                         <div class="pz-tag-item">
                             <input type="checkbox" name="tags[]" id="tag-{{ $tag->id }}"
-                                value="{{ $tag->tag }}" class="pz-tag-checkbox" {{ in_array($tag->tag, explode(',', $property->tags)) ? 'checked' : '' }}>
+                                value="{{ $tag->tag }}" class="pz-tag-checkbox"
+                                {{ in_array($tag->tag, explode(',', $property->tags)) ? 'checked' : '' }}>
                             <label for="tag-{{ $tag->id }}" class="pz-label">{{ $tag->tag }}</label>
                         </div>
                     @endforeach
@@ -127,7 +128,7 @@
                 </div>
             </div>
 
-            {{-- Površina i spratovi --}}
+            {{-- Area --}}
             <div class="pz-grid-2">
                 <div class="pz-form-group">
                     <label for="area" class="pz-label">Površina (m²)</label>
@@ -164,7 +165,7 @@
                 </div>
             </div>
 
-            {{-- Grejanje i Mesečni troškovi --}}
+            {{-- Heating and Monthly expenses --}}
             <div class="pz-form-group">
                 <label for="heating" class="pz-label">Grejanje</label>
                 <div>
@@ -196,7 +197,7 @@
                 </div>
             </div>
 
-            {{-- Cena Najma --}}
+            {{-- Price --}}
             <div class="pz-grid-2">
                 <div class="pz-form-group">
                     <label for="rent_price" class="pz-label">Cena Najma (€)</label>
@@ -213,7 +214,6 @@
         </form>
         @include('partials._loader')
     </div>
-    {{-- <script src="{{ asset('js/mapaRegister.js') }}"></script> --}}
     <script src="{{ asset('js/loading.js') }}"></script>
     <script>
         const propertyOptions = {

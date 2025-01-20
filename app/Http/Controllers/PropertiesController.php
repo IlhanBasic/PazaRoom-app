@@ -30,7 +30,7 @@ class PropertiesController extends Controller
         return view('property.index', [
             "properties" => Property::where('status', 'Active')
                 ->filter($validated)
-                ->paginate(5)
+                ->paginate(10)
         ]);
     }
 
@@ -74,8 +74,8 @@ class PropertiesController extends Controller
             'rent_price' => 'nullable|numeric|gt:0',
             'monthly_utilities' => 'nullable|numeric|gt:0',
             'status' => 'nullable|in:Active,Inactive,Pending,Declined',
-            'ownership_proof' => 'required|file|mimes:png,jpg,jpeg,pdf|max:10240',
-            'images' => 'nullable|array|max:10',
+            'ownership_proof' => 'required|file|mimes:png,jpg,jpeg,pdf',
+            'images' => 'nullable|array',
             'images.*' => 'nullable|file|mimes:png,jpg,jpeg',
         ]);
     
@@ -85,13 +85,12 @@ class PropertiesController extends Controller
             $formData['tags'] = implode(',', $formData['tags']);
         }
     
-        // Uploadovanje vlasničkog dokaza i postavljanje kao javno
         if ($request->hasFile('ownership_proof')) {
             if ($request->file('ownership_proof')->isValid()) {
                 $ownershipProofPath = 'ownership_proofs/' . uniqid('proof_', true) . '.' . $request->file('ownership_proof')->extension();
                 $proofPath = $request->file('ownership_proof')->storeAs('', $ownershipProofPath, [
                     'disk' => 's3',
-                    'visibility' => 'public',  // Postavljamo javnu vidljivost
+                    'visibility' => 'public',
                 ]);
                 $formData['ownership_proof'] = Storage::disk('s3')->url($proofPath);
             }
@@ -99,14 +98,13 @@ class PropertiesController extends Controller
             $formData['ownership_proof'] = null;
         }
     
-        // Uploadovanje slika i postavljanje kao javno
         if ($request->hasFile('images')) {
             $imagePaths = [];
             foreach ($request->file('images') as $image) {
                 $imagePath = 'images/' . uniqid('image_', true) . '.' . $image->extension();
                 $storedPath = $image->storeAs('', $imagePath, [
                     'disk' => 's3',
-                    'visibility' => 'public',  // Postavljamo javnu vidljivost
+                    'visibility' => 'public',  
                 ]);
                 $imagePaths[] = Storage::disk('s3')->url($storedPath);
             }
@@ -114,8 +112,6 @@ class PropertiesController extends Controller
         } else {
             $formData['images'] = null;
         }
-    
-        // Kreiranje nove nekretnine
         Property::create($formData);
     
         return redirect('/properties')->with('success', 'Smeštaj je uspešno kreiran.');
@@ -176,36 +172,29 @@ class PropertiesController extends Controller
             'rent_price' => 'nullable|numeric|gt:0',
             'monthly_utilities' => 'nullable|numeric|gt:0',
             'status' => 'nullable|in:Active,Inactive',
-            'images' => 'nullable|array|max:10',
+            'images' => 'nullable|array',
             'images.*' => 'nullable|file|mimes:png,jpg,jpeg',
             'delete_images' => 'nullable|array',
             'delete_images.*' => 'string',
         ]);
     
-        // Provera autentifikacije
         if (!auth()->id()) {
             return redirect('/properties')->with('error', 'Morate biti ulogovani da biste izmenili smeštaj.');
         }
     
         $formData['owner_id'] = auth()->id();
-    
-        // Obrada tagova
         if (isset($formData['tags'])) {
             $formData['tags'] = implode(',', $formData['tags']);
         }
-    
-        // Dohvatanje nekretnine iz baze
+
         $property = Property::findOrFail($id);
-    
-        // Obrada brisanja označenih slika
+
         if ($request->has('delete_images')) {
             $existingImages = $property->images ? explode(',', $property->images) : [];
             $remainingImages = array_diff($existingImages, $request->delete_images);
     
-            // Brisanje označenih slika sa S3
             foreach ($request->delete_images as $image) {
                 if (in_array($image, $existingImages)) {
-                    // Brisanje sa S3
                     Storage::disk('s3')->delete($image);
                 }
             }
@@ -215,33 +204,25 @@ class PropertiesController extends Controller
             $formData['images'] = $property->images;
         }
     
-        // Dodavanje novih slika
         if ($request->hasFile('images')) {
             $newImagePaths = [];
             foreach ($request->file('images') as $image) {
                 $newImagePath = 'images/' . uniqid('image_', true) . '.' . $image->extension();
                 $storedPath = $image->storeAs('', $newImagePath, [
                     'disk' => 's3',
-                    'visibility' => 'public',  // Postavljanje javne vidljivosti
+                    'visibility' => 'public', 
                 ]);
                 $newImagePaths[] = Storage::disk('s3')->url($storedPath);
             }
     
-            // Kombinovanje preostalih i novih slika
             $currentImages = $formData['images'] ? explode(',', $formData['images']) : [];
             $formData['images'] = implode(',', array_merge($currentImages, $newImagePaths));
         }
-    
-        // Ažuriranje nekretnine
         $property->fill($formData);
         $property->save();
     
         return redirect('/properties')->with('success', 'Smeštaj je uspešno izmenjen.');
     }
-    
-    
-    
-
     public function accept(Request $request, string $id)
     {
         $user = auth()->user();

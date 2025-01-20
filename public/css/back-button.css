@@ -12,7 +12,7 @@
     border: none;
     cursor: pointer;
     background: none;
-    z-index: 99999;
+    z-index: 999999999;
 }
 .back-button:hover {
     color: #3182ce; /* Darker shade of blue on hover */

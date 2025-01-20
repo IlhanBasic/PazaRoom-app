@@ -1,6 +1,5 @@
 @section('title', 'PazaRoom - Izmeni blog')
 <x-layout>
-    <x-back-button />
     <link rel="stylesheet" href="{{ asset('css/create-blog.css') }}">
     <h1 class="page-title">Izmeni blog ID: {{$blog->id}}</h1>
     <form action="{{ route('blog_update', $blog->id) }}" method="POST" enctype="multipart/form-data"
@@ -28,7 +27,7 @@
         <div class="blog-image-preview">
             @if ($blog->image)
                 <p>Trenutna slika: </p>
-                <img src="{{ asset('storage/' . $blog->image) }}" alt="Blog Image">
+                <img src="{{ asset($blog->image) }}" alt="Blog Image">
             @endif
         </div>
         @error('image')

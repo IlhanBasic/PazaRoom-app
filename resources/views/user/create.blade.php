@@ -50,6 +50,13 @@
                             <span class="error-message">{{ $message }}</span>
                         @enderror
                     </div>
+                    <div class="form-input-container">
+                        <label for="confirm-password" class="label">Ponovljena Lozinka</label>
+                        <input type="password" id="confirm-password" name="confirm-password" required class="input-field" placeholder="Ponovljena lozinka">
+                        @error('confirm-password')
+                            <span class="error-message">{{ $message }}</span>
+                        @enderror
+                    </div>
 
                     <div class="form-input-container">
                         <label for="role_id" class="label">Vi ste</label>

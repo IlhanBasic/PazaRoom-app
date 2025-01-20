@@ -1,67 +1,177 @@
-
 .page-title {
     text-align: center;
-    color: #333;
-    margin-top: 20px;
+    color: #1a202c;
+    margin: 2rem 0;
+    font-size: 2rem;
+    font-weight: 600;
 }
 
 .create-blog-form {
     background-color: #fff;
-    padding: 20px;
+    padding: 2rem;
     max-width: 600px;
-    margin: 0 auto;
+    margin: 2rem auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.blog-file-preview {
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid #e2e8f0;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background: #f7fafc;
+}
+
+.blog-file-preview::-webkit-scrollbar {
+    width: 8px;
+}
+
+.blog-file-preview::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.blog-file-preview::-webkit-scrollbar-thumb {
+    background: #cbd5e0;
+    border-radius: 4px;
+}
+
+.blog-file-preview::-webkit-scrollbar-thumb:hover {
+    background: #a0aec0;
 }
 
 .form-label {
     display: block;
-    font-size: 16px;
-    margin-bottom: 8px;
-    color: #333;
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: #2d3748;
 }
 
-.form-select, .form-input, .form-textarea {
+.error-message {
+    color: #e53e3e;
+    font-size: 0.875rem;
+    margin-top: -0.5rem;
+    margin-bottom: 1rem;
+}
+
+.form-select,
+.form-input,
+.form-textarea {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 16px;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1.5rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+    background-color: #fff;
+}
+
+.form-select:focus,
+.form-input:focus,
+.form-textarea:focus {
+    outline: none;
+    border-color: #4CAF50;
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
 }
 
 .form-textarea {
     resize: vertical;
-    height: 150px;
+    min-height: 150px;
+    max-height: 400px;
+    line-height: 1.5;
 }
 
 .submit-button {
     background-color: #4CAF50;
     color: white;
-    padding: 12px 20px;
+    padding: 0.875rem 1.5rem;
     border: none;
-    border-radius: 4px;
+    border-radius: 8px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 1rem;
+    font-weight: 500;
     width: 100%;
+    transition: all 0.2s ease;
 }
 
 .submit-button:hover {
     background-color: #45a049;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.2);
 }
 
-br {
-    display: block;
-    margin-bottom: 15px;
+.submit-button:active {
+    transform: translateY(0);
 }
 
+.submit-button:disabled {
+    background-color: #9ca3af;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Custom File Input Styling */
 .form-input[type="file"] {
-    padding: 5px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    width: 100%;
+    position: relative;
+    padding: 1rem;
+    background-color: #f7fafc;
+    border: 2px dashed #e2e8f0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
 }
 
 .form-input[type="file"]:hover {
     border-color: #4CAF50;
+    background-color: #f0fff4;
+}
+
+.form-input[type="file"]::file-selector-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 6px;
+    margin-right: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.form-input[type="file"]::file-selector-button:hover {
+    background-color: #45a049;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 640px) {
+    .create-blog-form {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+
+    .page-title {
+        font-size: 1.5rem;
+        margin: 1.5rem 0;
+    }
+
+    .form-select,
+    .form-input,
+    .form-textarea {
+        padding: 0.625rem 0.875rem;
+        font-size: 0.95rem;
+    }
+
+    .submit-button {
+        padding: 0.75rem 1.25rem;
+    }
+}
+.blog-image-preview img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
 }

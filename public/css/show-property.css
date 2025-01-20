@@ -47,6 +47,7 @@
 /* Image Gallery */
 .gallery-container {
     position: relative;
+    display: flex;
     height: 24rem;
     background-color: black;
 }

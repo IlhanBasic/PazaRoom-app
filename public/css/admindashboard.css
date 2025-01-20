@@ -58,7 +58,9 @@
     margin-bottom: 2rem;
     margin-left: 2rem;
     }
-    
+    .sidebar-link .home-link:hover {
+        color: white;
+    }
     .sidebar nav {
     display: flex;
     flex-direction: column;
@@ -96,6 +98,7 @@
     
     .home-link:hover {
     background-color: var(--primary-hover);
+    color: white;
     }
     
     /* Mobile Menu Button */

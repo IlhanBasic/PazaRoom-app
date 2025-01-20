@@ -22,7 +22,7 @@
 </head>
 
 <body>
-    <!-- Navigaciona traka -->
+    <!-- Navigation -->
     <x-flash-message />
     <nav class="nav">
         <div class="nav-container">
@@ -155,12 +155,12 @@
         </div>
     </nav>
 
-    <!-- Glavni sadržaj -->
+    <!-- Main Content -->
     <main class="slot">
         {{ $slot }}
     </main>
 
-    <!-- Podnožje -->
+    <!-- Footer -->
     <footer class="footer">
         <div class="footer-container">
             <p class="footer-text">&copy; {{ date('Y') }} Izdavanje Stanova. Sva prava zadržana PazaRoom.</p>

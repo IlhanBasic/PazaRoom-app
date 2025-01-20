@@ -4,7 +4,7 @@
         <h1 class="form-title">Kreiraj ulogu</h1>
         <form action="{{ route('role_store') }}" method="POST" enctype="multipart/form-data" id="form" class="form-container">
             @csrf
-            {{-- Uloga --}}
+            {{-- Role --}}
             <div class="form-group">
                 <label for="name" class="form-label">Naziv uloge</label>
                 <div class="form-input-container">

@@ -21,8 +21,8 @@ class UsersController extends Controller
      */
     public function create()
     {
-        $roles = Role::all(); // Fetch all roles from the database
-        return view('user.create', compact('roles')); // Pass roles to the view
+        $roles = Role::all(); 
+        return view('user.create', compact('roles'));
     }
 
     /**
@@ -30,25 +30,28 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        // Validacija ostalih polja
         $formData = $request->validate([
-            'first_name' => 'required|string|max:255',
-            'last_name' => 'required|string|max:255',
+            'first_name' => 'required|regex:/^[a-zA-ZšđžčćŠĐŽČĆ]+$/|max:255',
+            'last_name' => 'required|regex:/^[a-zA-ZšđžčćŠĐŽČĆ]+$/|max:255',
+
             'email' => 'required|email|unique:users',
             'password' => [
                 'required',
                 'string',
                 'min:8',
                 Password::min(8)
-                    ->mixedCase()  // Lozinka mora imati velika i mala slova
-                    ->numbers()    // Lozinka mora imati brojeve
-                    ->symbols(),  // Lozinka mora imati specijalne karaktere
+                    ->mixedCase() 
+                    ->numbers()  
+                    ->symbols(), 
             ],
+            'confirm-password' => 'required|string|min:8|same:password',
             'phone_number' => ['nullable', 'string', 'max:15', 'regex:/^(06[0-9]{7,8}|\+3816[0-9]{7,8})$/'],
             'role_id' => 'required|exists:roles,id',
         ], [
             'first_name.required' => 'Ime je obavezno.',
+            'first_name.regex' => 'Ime mora biti sastavljeno od samo slova.',
             'last_name.required' => 'Prezime je obavezno.',
+            'last_name.regex' => 'Prezime mora biti sastavljeno od samo slova.',
             'email.required' => 'Email je obavezan.',
             'email.email' => 'Unesite validan email.',
             'email.unique' => 'Email je već registrovan.',
@@ -57,21 +60,23 @@ class UsersController extends Controller
             'password.mixed' => 'Lozinka mora sadržati i velika i mala slova.',
             'password.numbers' => 'Lozinka mora sadržati brojeve.',
             'password.symbols' => 'Lozinka mora sadržati specijalne karaktere.',
+            'confirm-password.required' => 'Potvrda lozinke je obavezna.',
+            'confirm-password.min' => 'Potvrđena lozinka mora imati najmanje 8 karaktera.',
+            'confirm-password.same' => 'Lozinka i potvrđena lozinka se ne poklapaju.', // Dodata poruka za grešku u slučaju nejednakih lozinki
             'phone_number.regex' => 'Broj telefona mora biti validan srpski broj (format: 06xxxxxxxx ili +381xxxxxxxx).',
             'role_id.required' => 'Uloga je obavezna.',
             'role_id.exists' => 'Izabrana uloga ne postoji.',
         ]);
 
-        // Šifrovanje lozinke
         $formData['password'] = bcrypt($formData['password']);
 
-        // Kreiranje korisnika
         if (User::create($formData)) {
             return redirect('/users/login')->with('success', 'Korisnik je uspešno kreiran.');
         }
 
         return redirect('/users/register')->with('error', 'Korisnik nije uspešno kreiran.');
     }
+
     /**
      * Display the specified resource.
      */
@@ -100,8 +105,8 @@ class UsersController extends Controller
         if (Auth::id() != $user->id) {
             return redirect('/')->with('error', 'Nemate pristup ovoj stranici.');
         }
-        $roles = Role::all(); // Fetch all roles for editing
-        return view('user.edit', compact('user', 'roles')); // Pass user and roles to the view
+        $roles = Role::all();
+        return view('user.edit', compact('user', 'roles')); 
     }
 
     /**
@@ -119,23 +124,32 @@ class UsersController extends Controller
         }
 
         $rules = [
-            'first_name' => 'required|string|max:255',
-            'last_name' => 'required|string|max:255',
+            'first_name' => [
+                'required',
+                'string',
+                'max:255',
+                'regex:/^[a-zA-Z]+$/'
+            ],
+            'last_name' => [
+                'required',
+                'string',
+                'max:255',
+                'regex:/^[a-zA-Z]+$/'
+            ],
             'phone_number' => [
                 'nullable',
                 'string',
                 'max:15',
-                'regex:/^(\+381|0)6[0-9]{7,8}$/' // Validates Serbian mobile numbers
+                'regex:/^(\+381|0)6[0-9]{7,8}$/'
             ],
         ];
 
-        // Add password validation rules only if any password field is filled
         if ($request->filled('current_password') || $request->filled('new_password') || $request->filled('new_password_confirmation')) {
             $rules['current_password'] = 'required|string';
             $rules['new_password'] = [
                 'required',
                 'string',
-                'confirmed', // Automatically checks new_password_confirmation
+                'confirmed', 
                 Password::min(8)
                     ->mixedCase()
                     ->numbers()
@@ -148,9 +162,11 @@ class UsersController extends Controller
             'first_name.required' => 'Ime je obavezno.',
             'first_name.string' => 'Ime mora biti tekst.',
             'first_name.max' => 'Ime ne može imati više od 255 karaktera.',
+            'first_name.regex' => 'Ime ne sme sadržati bilo koji karakter osim slova.',
             'last_name.required' => 'Prezime je obavezno.',
             'last_name.string' => 'Prezime mora biti tekst.',
             'last_name.max' => 'Prezime ne može imati više od 255 karaktera.',
+            'last_name.regex' => 'Prezime ne sme sadržati bilo koji karakter osim slova.',
             'phone_number.regex' => 'Broj telefona mora biti validan srpski broj (format: 06xxxxxxxx ili +381xxxxxxxx).',
             'new_password.different' => 'Nova lozinka ne sme biti ista kao trenutna lozinka.',
             'new_password.confirmed' => 'Nova lozinka i potvrda lozinke se ne poklapaju.',
@@ -164,12 +180,12 @@ class UsersController extends Controller
             'new_password.symbols' => 'Nova lozinka mora sadržati specijalne karaktere.',
         ]);
 
-        // Update basic info
+
         $user->first_name = $validatedData['first_name'];
         $user->last_name = $validatedData['last_name'];
         $user->phone_number = $validatedData['phone_number'];
 
-        // Handle password update if requested
+
         if ($request->filled('current_password')) {
             if (!Hash::check($request->input('current_password'), $user->password)) {
                 return redirect()
@@ -187,7 +203,6 @@ class UsersController extends Controller
             ->route('home')
             ->with('success', 'Profil je uspešno ažuriran.');
     }
-
     /**
      * Remove the specified resource from storage.
      */
@@ -199,7 +214,6 @@ class UsersController extends Controller
             return redirect('/')->with('error', 'Nemate pristup ovoj stranici.');
         }
 
-        // Pokušaj brisanja korisnika
         if (!User::destroy($id)) {
 
             return redirect('/admin')->with(['error' => 'Korisnik nije uspešno obrisan']);
@@ -220,10 +234,15 @@ class UsersController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect('/')->with('success', 'Uspjesno ste se prijavili.');
+            return redirect('/')->with('success', 'Uspešno ste se prijavili.');
+        }
+        if (!$user = User::where('email', $credentials['email'])->first()) {
+            return redirect()->back()->with('error', 'Korisnicki račun ne postoji.');
         }
 
-        return redirect('/users/login')->with('error', 'Pogresni podaci za prijavu.');
+        if (!Hash::check($credentials['password'], $user->password)) {
+            return redirect()->back()->with('error', 'Šifra nije ispravna.');
+        }
     }
 
     public function logout(Request $request)
@@ -231,7 +250,7 @@ class UsersController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect('/properties')->with('success', 'Uspjesno ste se odjavili.');
+        return redirect('/properties')->with('success', 'Uspešno ste se odjavili.');
     }
     public function favorites()
     {
@@ -239,40 +258,37 @@ class UsersController extends Controller
         if (!$user) {
             return redirect()->route('login')->with('error', 'Morate biti prijavljeni.');
         }
-    
-        // Preuzimamo omiljene nekretnine korisnika
+
         $favorites = Property::whereHas('favorites', function ($query) use ($user) {
             $query->where('user_id', $user->id);
-        })->paginate(10); // Dodaj paginaciju
-    
+        })->paginate(10);
+
         return view('user.favorites', ["favorites" => $favorites]);
     }
-    
-    
+
+
     public function store_favorite(Request $request)
     {
         $user = auth()->user();
         if (!$user) {
             return redirect()->back()->with('error', 'Morate biti prijavljeni.');
         }
-    
-        if ($user->role_id != 2) { // Ispravljena logika
+
+        if ($user->role_id != 2) { 
             return redirect()->back()->with('error', 'Morate biti student.');
         }
-    
+
         $propertyId = $request->input('property_id');
         if (!$propertyId) {
             return redirect()->back()->with('error', 'Property ID je neophodan.');
         }
-    
-        // Proveravamo da li je već dodato u favorite
+
         if ($user->favorites()->where('property_id', $propertyId)->exists()) {
             return redirect()->back()->with('info', 'Smeštaj je već u favoritima.');
         }
-    
-        // Dodajemo u favorite
+
         $user->favorites()->attach($propertyId);
-    
+
         return redirect()->back()->with('success', 'Smeštaj je uspešno dodat u favorite.');
     }
     public function destroy_favorite($id, $favorite_id)
@@ -281,19 +297,15 @@ class UsersController extends Controller
         if (!$user) {
             return redirect()->back()->with('error', 'Morate biti prijavljeni.');
         }
-    
-        // Check if the favorite exists for the user
+
         $favorite = $user->favorites()->find($favorite_id);
-    
+
         if (!$favorite) {
             return redirect()->back()->with('error', 'Favorite nije pronađen.');
         }
-    
-        // Detach the favorite
+
         $user->favorites()->detach($favorite_id);
-    
+
         return redirect()->back()->with('success', 'Smeštaj je uspešno uklonjen iz favorite.');
     }
-    
-    
 }

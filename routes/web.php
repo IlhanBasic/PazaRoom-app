@@ -80,6 +80,8 @@ Route::prefix('users')->group(function () {
 });
 Route::prefix('admin')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin')->middleware('auth');
+    Route::get('/create-user', [AdminController::class, 'create_user'])->name('create_user')->middleware('auth');
+    Route::post('/store-user', [AdminController::class, 'store_user'])->name('store_user')->middleware('auth');
 });
 Route::prefix('reviews')->group(function () {
     Route::get('/create/{id}', [ReviewsController::class, 'create'])->name('review_create')->middleware('auth');

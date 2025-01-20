@@ -213,7 +213,7 @@
                 <div x-show="currentTab === 'users'" x-cloak class="card">
                     <div class="card-header">
                         <h3>Korisnici</h3>
-                        <a href="{{ route('register') }}" class="btn-add">
+                        <a href="{{ route('create_user') }}" class="btn-add">
                             <i class="fas fa-add"></i> Dodaj korisnika
                         </a>
                     </div>

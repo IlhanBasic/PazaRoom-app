@@ -15,8 +15,12 @@
 .nav {
     background: linear-gradient(to right, #ffffff, #3b82f6);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    position: relative;
-    z-index: 50;
+    /* position: relative; */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999999999;
 }
 
 .nav-container {
@@ -92,6 +96,7 @@
     border-radius: 0.375rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     display: none;
+    z-index: 9999999999;
 }
 
 .dropdown-menu.show {
@@ -221,6 +226,7 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     min-height: 100vh;
+    margin-top: 3.3rem;
 }
 
 .container {
