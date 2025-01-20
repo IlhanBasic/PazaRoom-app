@@ -1,7 +1,7 @@
 @section('title', 'PazaRoom - Blog')
 <x-layout>
+        
     <link rel="stylesheet" href="{{ asset('css/blog.css') }}">
-    <body>
         <header>
             <div class="container">
                 <h1>Saveti za studente Blog</h1>
@@ -52,8 +52,6 @@
                 @endforeach
             </div>
         </main>
-        <div class="pagination">
-            {{ $blogs->links() }}
-        </div>
-    </body>
+        {{ $blogs->links() }}
 </x-layout>
+

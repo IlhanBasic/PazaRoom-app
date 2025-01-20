@@ -13,7 +13,7 @@
 }
 /* Navigation */
 .nav {
-    background: linear-gradient(to right, #ffffff, #3b82f6);
+    background: linear-gradient(to right, #cfd3df, #0947f1); /* Suptilan tamno-plavi gradient */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     /* position: relative; */
     position: fixed;
@@ -28,7 +28,7 @@
     margin: 0 auto;
     padding: 1rem;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
 }
 

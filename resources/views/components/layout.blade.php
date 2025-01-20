@@ -48,9 +48,7 @@
                 <a href="{{ route('blogs') }}" class="nav-link {{ request()->routeIs('blog') ? 'active' : '' }}">
                     Blog <i class="fas fa-newspaper icon"></i>
                 </a>
-                <a href="{{ route('contact') }}" class="nav-link {{ request()->routeIs('contact') ? 'active' : '' }}">
-                    Kontakt <i class="fas fa-phone icon"></i>
-                </a>
+
                 @if (Auth::check())
                     @if (Auth::user()->role->name == 'Admin')
                         <a href="{{ route('admin') }}" class="nav-link">
@@ -89,6 +87,10 @@
                         </div>
                     </div>
                 @else
+                    <a href="{{ route('contact') }}"
+                        class="nav-link {{ request()->routeIs('contact') ? 'active' : '' }}">
+                        Kontakt <i class="fas fa-phone icon"></i>
+                    </a>
                     <a href="{{ route('login') }}" class="nav-link">
                         Prijava <i class="fas fa-sign-in-alt icon"></i>
                     </a>
@@ -124,7 +126,7 @@
                             Dodaj smeštaj <i class="fas fa-add icon"></i>
                         </a>
                     @endif
-                    @if( Auth::user()->role->name == 'Student')
+                    @if (Auth::user()->role->name == 'Student')
                         <a href="{{ route('favorites', Auth::user()) }}" class="mobile-link">
                             Favorites <i class="fas fa-heart icon"></i>
                         </a>

@@ -10,6 +10,10 @@ class Contact_MessagesController extends Controller
 {
     public function contact()
     {
+        $user = auth()->user();
+        if ($user && $user->role_id === 3) {
+            return redirect('/')->with('error', 'Nemate pristup ovoj stranici.');
+        }
         return view('contact.contact');
     }
     public function store(Request $request)

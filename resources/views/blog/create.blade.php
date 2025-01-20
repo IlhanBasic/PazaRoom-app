@@ -6,9 +6,9 @@
         @csrf
         <label for="category" class="form-label">Kategorija:</label>
         <select name="category" id="category" class="form-select" value="{{ old('category') }}">
-            <option value="smestaj">Smestaj</option>
-            <option value="stednja novca">Štednja novca</option>
-            <option value="studentski zivot">Studentski život</option>
+            <option value="smeštaj">Smeštaj</option>
+            <option value="štednja novca">Štednja novca</option>
+            <option value="studentski život">Studentski život</option>
         </select>
         @error('category')
             <p class="error-message">{{ $message }}</p>

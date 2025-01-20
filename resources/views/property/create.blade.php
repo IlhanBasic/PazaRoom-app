@@ -73,7 +73,7 @@
 
             <!-- Images -->
             <div class="pz-form-group">
-                <label for="images" class="pz-label">Slike</label>
+                <label for="images" class="pz-label">Slike(max:5)</label>
                 <div>
                     <input type="file" id="images" name="images[]" multiple class="pz-file-input" />
                     @error('images')
@@ -84,7 +84,7 @@
 
             {{-- Tags  --}}
             <div class="pz-form-group">
-                <label class="pz-label">Tagovi</label>
+                <label class="pz-label">Tagovi(max:5)</label>
                 <div class="pz-tag-grid">
                     @foreach ($tags as $tag)
                         <div class="pz-tag-item">
