@@ -1,5 +1,7 @@
 @section('title', 'PazaRoom - Dodaj smeštaj')
 <x-layout>
+    <x-back-button />
+
     <div class="pz-container">
         <h1 class="pz-title">Dodaj novi smeštaj</h1>
         <form action="{{ route('properties_store') }}" method="POST" enctype="multipart/form-data" id="form" class="pz-form">

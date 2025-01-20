@@ -8,6 +8,7 @@
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     margin: 1rem 0;
     max-width: 900px;
+    max-height: 330px;
 }
 
 .property-card:hover {
@@ -95,15 +96,20 @@
 }
 
 /* Action Buttons */
+
 .action-buttons {
     display: flex;
+    align-items: center;
+    justify-content: center;
     gap: 1rem;
+    height: max-content;
     margin-top: auto;
 }
 
 .details-button, .delete-button {
     display: flex;
     align-items: center;
+    justify-content: center; /* Ensure content is centered */
     gap: 0.5rem;
     padding: 0.6rem 1.2rem;
     border-radius: 8px;
@@ -111,6 +117,8 @@
     transition: all 0.2s ease;
     border: none;
     cursor: pointer;
+    height: 40px; /* Set a consistent height */
+    line-height: 1; /* Adjust line height if needed */
 }
 
 .details-button {
@@ -120,6 +128,7 @@
 
 .details-button:hover {
     background: #2c5282;
+    color: white;
 }
 
 .delete-button {
@@ -132,6 +141,7 @@
     background: #e53e3e;
     color: white;
 }
+
 
 /* Declined State */
 .declined {

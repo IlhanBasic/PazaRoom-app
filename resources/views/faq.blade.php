@@ -1,3 +1,4 @@
+@section('title', 'PazaRoom - FAQ')
 <x-layout>
     <link rel="stylesheet" href="{{ asset('css/faq.css') }}">
 

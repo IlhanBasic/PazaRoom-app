@@ -43,7 +43,7 @@
                 </a>
                 @if (auth()->check() && auth()->user()->role->name == 'Vlasnik' && $property->owner_id == auth()->user()->id)
                     <form action="{{ route('property_delete', $property->id) }}" method="POST"
-                        class="delete-property-form" data-property-id="{{ $property->id }}">
+                        class="delete-property-form" id="delete-form-{{ $property->id }}" data-property-id="{{ $property->id }}">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="delete-button">
@@ -56,7 +56,7 @@
                         $isFavorite = $property->is_favorite();
                     @endphp
                     <form action="{{ $isFavorite ? route('destroy_favorite', ['id' => auth()->user()->id, 'favorite_id' => $property->id]) : route('store_favorite') }}" 
-                          method="POST" class="favorites-property-form" data-property-id="{{ $property->id }}">
+                          method="POST" class="favorites-property-form" data-property-id="{{ $property->id }}" id="{{ $isFavorite ? 'remove' : 'save' }}-favorites-form-{{ $property->id }}">
                         @csrf
                         @method($isFavorite ? 'DELETE' : 'POST')
                         <input type="hidden" name="property_id" value="{{ $property->id }}">
@@ -74,4 +74,5 @@
 
 {{-- Delete Confirmation Modal --}}
 <script src="{{ asset('js/deleteButton.js') }}"></script>
+<script src="{{ asset('js/favoriteButton.js') }}"></script>
 <link rel="stylesheet" href="{{ asset('css/property-card.css') }}">

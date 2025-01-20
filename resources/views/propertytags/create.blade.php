@@ -1,3 +1,4 @@
+@section('title', 'PazaRoom - Kreiraj tag')
 <x-layout>
     <div class="container">
         <h1 class="form-title">Kreiraj tag</h1>

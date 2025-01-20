@@ -1,3 +1,4 @@
+@section('title', 'PazaRoom - Izmeni tag')
 <x-layout>
     <div class="container">
         <h1 class="heading">Izmeni tag</h1>

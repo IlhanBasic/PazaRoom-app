@@ -116,9 +116,17 @@
                 </a>
 
                 @if (Auth::check())
-                    @if (Auth::user()->role->name != 'Admin')
+                    @if (Auth::user()->role->name === 'Vlasnik')
                         <a href="{{ route('owner_properties', Auth::user()) }}" class="mobile-link">
                             Moj smeštaj <i class="fas fa-home icon"></i>
+                        </a>
+                        <a href="{{ route('properties_create') }}" class="mobile-link">
+                            Dodaj smeštaj <i class="fas fa-add icon"></i>
+                        </a>
+                    @endif
+                    @if( Auth::user()->role->name == 'Student')
+                        <a href="{{ route('favorites', Auth::user()) }}" class="mobile-link">
+                            Favorites <i class="fas fa-heart icon"></i>
                         </a>
                     @endif
                     @if (Auth::user()->role->name == 'Admin')
@@ -148,7 +156,7 @@
     </nav>
 
     <!-- Glavni sadržaj -->
-    <main>
+    <main class="slot">
         {{ $slot }}
     </main>
 

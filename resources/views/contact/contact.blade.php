@@ -1,3 +1,4 @@
+@section('title', 'PazaRoom - Kontakt')
 <x-layout>
     <link rel="stylesheet" href="{{ asset('css/contact.css') }}">
     <!-- Hero Section -->

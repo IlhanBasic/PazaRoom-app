@@ -4,7 +4,9 @@
     margin: 0 auto;
     padding: 20px;
 }
-
+.blog-container {
+    min-height: 50vh;
+}
 header {
     color: white;
     padding: 60px 0;

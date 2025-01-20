@@ -1,3 +1,4 @@
+@section('title', 'PazaRoom - Dodaj ulogu')
 <x-layout>
     <div class="container">
         <h1 class="form-title">Kreiraj ulogu</h1>

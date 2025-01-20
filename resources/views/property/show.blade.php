@@ -7,7 +7,7 @@
                     <a href="{{ $property->id . '/edit' }}" class="edit-btn">Edit</a>
                 @endif
             @endauth
-            
+
             <div class="content-container">
                 @if ($property->images)
                     <div class="gallery-container">
@@ -38,14 +38,12 @@
                     <div class="header">
                         <h1 class="title">{{ $property->title }}</h1>
                         <div class="location">
-                            <svg class="location-icon" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                            </svg>
-                            {{ $property->address }}
+                            <i class="fa-solid fa-location-dot"></i>
+                            @php
+                                $addressParts = explode(',', $property->address);
+                                $address = implode(', ', array_slice($addressParts, 0, 3));
+                            @endphp
+                            {{ $address }}
                         </div>
                     </div>
 
@@ -61,7 +59,7 @@
                             </div>
                         </div>
                     </div>
-
+                    <div id="map"></div>
                     <div class="details-grid">
                         <div class="detail-card">
                             <div class="detail-content">
@@ -82,7 +80,8 @@
                                 </div>
                                 <div>
                                     <div class="detail-label">Sprat</div>
-                                    <div class="detail-value">{{ $property->current_floor }}/{{ $property->floors }}</div>
+                                    <div class="detail-value">{{ $property->current_floor }}/{{ $property->floors }}
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -98,9 +97,22 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                        <div class="detail-card">
+                            <div class="detail-content">
+                                <div class="detail-icon">
+                                    <i class="fa-solid fa-user"></i>
+                                </div>
+                                <div>
+                                    <div class="detail-label">Vlasnik</div>
+                                    <div class="detail-value">
+                                        {{ $owner->first_name }} {{ $owner->last_name }}
+                                    </div>
+                                    <p><i class="fa-solid fa-phone"></i> {{ $property->owner->phone_number }}</p>
+                                    <p><i class="fa-solid fa-envelope"></i> {{ $property->owner->email }}</p>
+                                </div>
+                            </div>
+                        </div>
 
-                    <div class="details-grid">
                         <div class="detail-card">
                             <div class="detail-content">
                                 <div class="detail-icon">
@@ -112,7 +124,24 @@
                                 </div>
                             </div>
                         </div>
-
+                        @if ($property->tags)
+                            <div class="detail-card">
+                                <div class="detail-content">
+                                    <div class="detail-icon">
+                                        <i class="fa-solid fa-tag"></i>
+                                    </div>
+                                    <div>
+                                        <div class="detail-label">Karakteristike</div>
+                                        <div class="detail-value">
+                                            <div class="tags-container">
+                                                <x-property-tags :tagsCsv="$property['tags']" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+                        
                         <div class="detail-card">
                             <div class="detail-content">
                                 <div class="detail-icon">
@@ -124,59 +153,26 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="owner-tags">
-                        <div class="owner-info">
-                            <div class="detail-icon">
-                                <i class="fa-solid fa-user"></i>
-                            </div>
-                            <div>
-                                <div class="detail-label">Vlasnik</div>
-                                <div class="detail-value">
-                                    {{ $owner->first_name }} {{ $owner->last_name }}
+                        <div class="detail-card">
+                            <div class="detail-content">
+                                <div class="detail-icon">
+                                    <i class="fa-solid fa-pen-nib"></i>
                                 </div>
-                                <p><i class="fa-solid fa-phone"></i> {{ $property->owner->phone_number }}</p>
-                                <p><i class="fa-solid fa-envelope"></i> {{ $property->owner->email }}</p>
-                            </div>
-                        </div>
-
-                        @if ($property->tags)
-                            <div>
-                                <div class="detail-label">Karakteristike</div>
-                                <div class="tags-container">
-                                    <x-property-tags :tagsCsv="$property['tags']" />
-                                </div>
-                            </div>
-                        @endif
-                    </div>
-
-                    <div class="owner-tags">
-                        <div class="owner-info">
-                            <div class="detail-icon">
-                                <i class="fa-solid fa-map"></i>
-                            </div>
-                            <div>
-                                <div class="detail-label">Karta</div>
-                            </div>
-                        </div>
-                        <div id="map"></div>
-                    </div>
-
-                    <div class="owner-tags">
-                        <div class="owner-info">
-                            <div class="detail-icon">
-                                <i class="fa-solid fa-pen-nib"></i>
-                            </div>
-                            <div>
-                                <div class="detail-label">Opis</div>
-                                <div class="detail-value">
-                                    {{ $property->description }}
+                                <div>
+                                    <div class="detail-label">Opis</div>
+                                    <div class="detail-value">
+                                        {{ $property->description }}
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
+                    <div class="details-grid">
+                        
+
+                    </div>
+                     
                     <div class="reviews">
                         <div class="detail-content">
                             <div class="detail-icon">

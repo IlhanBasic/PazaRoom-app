@@ -1,3 +1,4 @@
+@section('title', 'PazaRoom - Detalji poruke')
 <x-layout>
     <link rel="stylesheet" href="{{ asset('css/show-contact.css') }}">
     <div class="message-container">
@@ -52,7 +53,7 @@
                     class="reply-button">
                     <i class="fas fa-reply"></i> Odgovori na mejl
                 </a>
-                <form action="{{ route('contact_delete', $message->id) }}" method="POST">
+                <form action="{{ route('contact_delete', $message->id) }}" method="POST" id="delete-form-{{ $message->id }}">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="delete-button">
@@ -64,3 +65,4 @@
         </div>
     </div>
 </x-layout>
+<script src="{{ asset('js/deleteButton.js') }}"></script>

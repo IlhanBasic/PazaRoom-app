@@ -1,4 +1,6 @@
+@section('title', 'PazaRoom - Izmeni blog')
 <x-layout>
+    <x-back-button />
     <link rel="stylesheet" href="{{ asset('css/create-blog.css') }}">
     <h1 class="page-title">Izmeni blog ID: {{$blog->id}}</h1>
     <form action="{{ route('blog_update', $blog->id) }}" method="POST" enctype="multipart/form-data"

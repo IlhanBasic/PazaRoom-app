@@ -34,7 +34,7 @@
                 </form>
 
                 <p class="register-link" style="--delay: 800ms">
-                    Nemate račun?
+                    Nemate profil?
                     <a href="{{ route('register') }}" class="register-text">
                         Registrujte se ovde
                         <i class="fa-solid fa-chevron-right"></i>

@@ -150,12 +150,18 @@
 
 /* Contact Form */
 .contact-form-container {
-    padding: 3rem;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
 
 .contact-form {
     display: grid;
     gap: 1.5rem;
+    width: 100%;
+    padding: 1rem;
 }
 
 .form-group {

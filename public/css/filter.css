@@ -14,6 +14,8 @@
     margin: 16px 32px;
     padding: 16px;
     border-radius: 8px;
+    max-width: 900px;
+    margin: auto;
     transition: all 0.3s ease;
 }
 
@@ -55,7 +57,7 @@
 .form-select:focus,
 .form-input:focus {
     outline: none;
-    ring: none;
+    /* ring: none; */
     border-color: #3B82F6;
 }
 
@@ -81,4 +83,9 @@
 .submit-button:hover {
     background-color: #2563EB;
     transform: scale(1.05);
+}
+@media (max-width: 768px) {
+    .filter-container{
+        margin: 16px;
+    }
 }

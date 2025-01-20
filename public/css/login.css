@@ -13,51 +13,52 @@
     border-radius: 0.5rem;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    width: 75%;
-    max-width: 600px;
+    width: 80%;
+    max-width: 700px; /* Povećana širina */
     animation: slideIn 0.8s ease-out forwards;
     transform: scale(1.02);
     transition: all 0.3s ease-out;
 }
 
 .login-form-container:hover {
-    transform: scale(1.02);
+    transform: scale(1.03);
 }
 
 /* Form Section */
 .form-section {
     width: 100%;
-    padding: 2rem;
+    padding: 2.5rem; /* Povećan padding */
     animation: fadeIn 0.5s ease-out forwards;
 }
 
 .form-title {
-    font-size: 1.5rem;
+    font-size: 1.8rem; /* Povećana veličina naslova */
     font-weight: bold;
     text-align: center;
-    margin-bottom: 1.5rem;
-    color: #2d3748; /* Dark Gray */
+    margin-bottom: 2rem;
+    color: #2d3748;
     animation: slideDown 0.5s ease-out forwards;
 }
 
 .input-field {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.8rem;
     animation: slideRight 0.5s ease-out forwards;
     animation-delay: var(--delay, 0ms);
 }
 
 .input-label {
     display: block;
-    font-size: 0.875rem;
-    color: #4a5568; /* Darker Gray */
-    margin-bottom: 0.5rem;
+    font-size: 1rem; /* Povećan font za labelu */
+    color: #4a5568;
+    margin-bottom: 0.6rem;
 }
 
 .input {
     width: 100%;
-    padding: 0.5rem;
+    padding: 0.75rem; /* Veći padding za input */
+    font-size: 1rem; /* Veći font */
     border: 1px solid #ccc;
-    border-radius: 0.375rem;
+    border-radius: 0.5rem;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease-in-out;
 }
@@ -68,19 +69,15 @@
     box-shadow: 0 0 0 2px rgba(49, 130, 206, 0.5);
 }
 
-.error-message {
-    color: #f56565;
-    font-size: 0.875rem;
-    animation: shake 0.5s ease-in-out;
-}
-
 .submit-button {
     width: 100%;
-    padding: 0.75rem;
+    min-width: 200px; /* Osigurava da dugme nije premalo */
+    padding: 1rem; /* Veće dugme */
+    font-size: 1rem;
     background-color: #3182ce;
     color: white;
     font-weight: bold;
-    border-radius: 0.375rem;
+    border-radius: 0.5rem;
     transition: all 0.3s ease-out;
     cursor: pointer;
     transform: translateY(0);
@@ -90,14 +87,14 @@
 
 .submit-button:hover {
     background-color: #2b6cb0;
-    transform: scale(1.05);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transform: scale(1.07);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
 }
 
 .register-link {
     text-align: center;
-    margin-top: 1rem;
-    font-size: 0.875rem;
+    margin-top: 1.2rem;
+    font-size: 1rem; /* Veći font */
     color: #4a5568;
     animation: fadeIn 0.5s ease-out forwards;
     animation-delay: var(--delay, 0ms);
@@ -127,42 +124,4 @@
     .image-section {
         display: block;
     }
-}
-
-/* Animations */
-@keyframes slideIn {
-    from { transform: translateX(-100%); opacity: 0; }
-    to { transform: translateX(0); opacity: 1; }
-}
-
-@keyframes kenburns {
-    0% { transform: scale(1) translate(0, 0); }
-    50% { transform: scale(1.1) translate(-1%, -1%); }
-    100% { transform: scale(1) translate(0, 0); }
-}
-
-@keyframes slideDown {
-    from { transform: translateY(-20px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-}
-
-@keyframes slideRight {
-    from { transform: translateX(-20px); opacity: 0; }
-    to { transform: translateX(0); opacity: 1; }
-}
-
-@keyframes slideUp {
-    from { transform: translateY(20px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-5px); }
-    75% { transform: translateX(5px); }
 }

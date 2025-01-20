@@ -1,6 +1,6 @@
 @section('title', 'PazaRoom - Moj smeštaj')
 <x-layout>
-    @section('title', 'Moji stanovi - Izdati stanovi')
+    <x-back-button />
     <!-- Lista stanova -->
     <section class="property-list-section">
         <div class="property-container">

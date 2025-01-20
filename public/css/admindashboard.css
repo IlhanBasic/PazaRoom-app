@@ -125,11 +125,13 @@ body {
     flex: 1;
     margin-left: var(--sidebar-width);
     padding: 2rem;
+    min-height: 100vh;
 }
 
 .container {
     max-width: 80rem;
     margin: 0 auto;
+    min-height: 100%;
 }
 
 .main-content h2 {
@@ -138,7 +140,9 @@ body {
     color: var(--text-color);
     margin-bottom: 2rem;
 }
-
+.sidebar.open{
+    min-height: 100%;
+}
 /* Cards */
 .card {
     background-color: var(--card-background);

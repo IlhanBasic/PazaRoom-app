@@ -1,6 +1,6 @@
+@section('title', 'PazaRoom - Blog')
 <x-layout>
     <link rel="stylesheet" href="{{ asset('css/blog.css') }}">
-
     <body>
         <header>
             <div class="container">
@@ -11,7 +11,8 @@
                 @endif
             </div>
         </header>
-        <main class="container">
+        {{-- <main class="container"> --}}
+        <main class="blog-container">
             <div class="blog-grid">
                 @if($blogs->isEmpty())
                     <p class="empty-message">Nema blogova za prikaz.</p>

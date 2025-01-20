@@ -1,6 +1,6 @@
-@section('title', 'PazaRoom - Moj smeštaj')
+@section('title', 'Omiljeni smeštaj - Lista izabranih')
 <x-layout>
-    @section('title', 'Omiljeni smeštaj - Lista izabranih')
+
     <!-- Lista stanova -->
     <section class="property-list-section">
         <div class="property-container">
