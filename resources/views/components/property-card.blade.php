@@ -73,6 +73,6 @@
 </div>
 
 {{-- Delete Confirmation Modal --}}
-<script src="{{ asset('js/deleteButton.js') }}"></script>
+
 <script src="{{ asset('js/favoriteButton.js') }}"></script>
 <link rel="stylesheet" href="{{ asset('css/property-card.css') }}">

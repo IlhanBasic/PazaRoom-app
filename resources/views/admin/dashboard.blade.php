@@ -113,8 +113,8 @@
                                                     <i class="fa-solid fa-check"></i>
                                                 </button>
                                             </form>
-                                            <form action="{{ route('property_delete', $review->id) }}" method="POST"
-                                                id="delete-form-{{ $review->id }}"
+                                            <form action="{{ route('property_delete', $property->id) }}" method="POST"
+                                                id="delete-form-{{ $property->id }}"
                                                 class="delete-property-tag-form">
                                                 @csrf
                                                 @method('DELETE')

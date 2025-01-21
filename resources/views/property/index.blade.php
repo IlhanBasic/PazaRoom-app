@@ -32,4 +32,5 @@
         </div>
     </section>
 </x-layout>
+<script src="{{ asset('js/deleteButton.js') }}"></script>
 <link rel="stylesheet" href="{{ asset('css/home.css') }}">
