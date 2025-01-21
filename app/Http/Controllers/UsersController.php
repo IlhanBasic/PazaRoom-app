@@ -237,7 +237,7 @@ class UsersController extends Controller
             return redirect('/')->with('success', 'Uspešno ste se prijavili.');
         }
         if (!$user = User::where('email', $credentials['email'])->first()) {
-            return redirect()->back()->with('error', 'Korisnicki račun ne postoji.');
+            return redirect()->back()->with('error', 'Korisnicki profil ne postoji.');
         }
 
         if (!Hash::check($credentials['password'], $user->password)) {

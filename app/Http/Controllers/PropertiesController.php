@@ -30,7 +30,7 @@ class PropertiesController extends Controller
         return view('property.index', [
             "properties" => Property::where('status', 'Active')
                 ->filter($validated)
-                ->paginate(10)
+                ->paginate(5)
         ]);
     }
 

@@ -45,10 +45,13 @@
                 <a href="{{ route('about') }}" class="nav-link {{ request()->routeIs('about') ? 'active' : '' }}">
                     About <i class="fas fa-info icon"></i>
                 </a>
-                <a href="{{ route('blogs') }}" class="nav-link {{ request()->routeIs('blog') ? 'active' : '' }}">
+                <a href="{{ route('blogs') }}" class="nav-link {{ request()->routeIs('blogs') ? 'active' : '' }}">
                     Blog <i class="fas fa-newspaper icon"></i>
                 </a>
-
+                <a href="{{ route('contact') }}"
+                class="nav-link {{ request()->routeIs('contact') ? 'active' : '' }}">
+                Kontakt <i class="fas fa-phone icon"></i>
+                </a>
                 @if (Auth::check())
                     @if (Auth::user()->role->name == 'Admin')
                         <a href="{{ route('admin') }}" class="nav-link">
@@ -87,10 +90,6 @@
                         </div>
                     </div>
                 @else
-                    <a href="{{ route('contact') }}"
-                        class="nav-link {{ request()->routeIs('contact') ? 'active' : '' }}">
-                        Kontakt <i class="fas fa-phone icon"></i>
-                    </a>
                     <a href="{{ route('login') }}" class="nav-link">
                         Prijava <i class="fas fa-sign-in-alt icon"></i>
                     </a>
@@ -193,8 +192,6 @@
                     dropdownMenu.style.display = 'none';
                 }
             });
-
-            // Close dropdown if clicking outside
             document.addEventListener('click', function(event) {
                 if (!dropdownButton.contains(event.target) && !dropdownMenu.contains(event.target)) {
                     dropdownMenu.style.display = 'none';
