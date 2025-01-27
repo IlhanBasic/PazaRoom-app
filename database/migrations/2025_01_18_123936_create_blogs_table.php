@@ -19,9 +19,9 @@ class CreateBlogsTable extends Migration
             $table->string('title');
             $table->text('image');
             $table->text('excerpt');
-            $table->integer('read_time'); // u minutama
-            $table->string('file_link'); // Čuvanje puta do fajla u storage-u
-            $table->timestamps(); // created_at i updated_at
+            $table->integer('read_time'); 
+            $table->string('file_link'); 
+            $table->timestamps();
         });
     }
 

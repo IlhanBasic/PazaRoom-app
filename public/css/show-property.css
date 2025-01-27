@@ -1,4 +1,4 @@
-/* Main Layout */
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -35,7 +35,6 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Main Content Container */
 .content-container {
     margin-top: 1rem;
     background-color: white;
@@ -44,7 +43,6 @@
     overflow: hidden;
 }
 
-/* Image Gallery */
 .gallery-container {
     position: relative;
     display: flex;
@@ -58,12 +56,10 @@
     object-fit: cover;
 }
 
-/* Content Section */
 .content-section {
     padding: 1rem;
 }
 
-/* Header Section */
 .header {
     margin-bottom: 2rem;
 }
@@ -88,7 +84,6 @@
     margin-right: 0.5rem;
 }
 
-/* Pricing Section */
 .pricing {
     background-color: #111827;
     border-radius: 0.75rem;
@@ -114,7 +109,6 @@
     font-weight: bold;
 }
 
-/* Key Details Grid */
 .details-grid {
     border-top: 1px solid #e5e7eb;
     display: grid;
@@ -157,7 +151,6 @@
     color: #111827;
 }
 
-/* Owner and Tags Section */
 .owner-tags {
     border-top: 1px solid #e5e7eb;
     display: flex;
@@ -188,14 +181,12 @@
     color: #4b5563;
 }
 
-/* Map Section */
 #map {
     height: 400px;
     width: 100%;
     border-radius: 0.75rem;
 }
 
-/* Reviews Section */
 .reviews {
     background-color: #f9fafb;
     border-radius: 0.75rem;
@@ -259,7 +250,6 @@
     background-color: #2563eb;
 }
 
-/* Responsive Design */
 @media (max-width: 1024px) {
     .details-grid {
         grid-template-columns: repeat(2, 1fr);

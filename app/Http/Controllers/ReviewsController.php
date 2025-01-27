@@ -41,6 +41,9 @@ class ReviewsController extends Controller
         }
         
         $review = Review::findOrFail($id);
+        if($review == null) {
+            return redirect('/admin')->with('error', 'Recenzija ne postoji.');
+        }
         $review->delete();
         return redirect('/admin')->with('success', 'Recenzija je uspešno obrisana.');
     }

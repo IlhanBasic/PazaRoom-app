@@ -1,4 +1,3 @@
-/* Variables */
 :root {
     --primary-color: #2b6cb0;
     --primary-dark: #1e4e8c;
@@ -17,7 +16,6 @@
     --gradient-primary: linear-gradient(135deg, #2b6cb0 0%, #7c3aed 100%);
 }
 
-/* Contact Hero Section */
 .contact-hero {
     position: relative;
     background-image: url('../images/contact-hero.jpg');
@@ -70,7 +68,6 @@
     margin: 0 auto;
 }
 
-/* Contact Section */
 .contact-section {
     padding: 6rem 0;
     background-color: var(--background-light);
@@ -88,7 +85,6 @@
     box-shadow: var(--shadow-lg);
 }
 
-/* Contact Info */
 .contact-info {
     padding: 3rem;
     background: var(--gradient-primary);
@@ -148,13 +144,11 @@
     font-size: 0.875rem;
 }
 
-/* Contact Form */
 .contact-form-container {
     padding: 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
 .contact-form {
@@ -224,7 +218,6 @@
     height: 20px;
 }
 
-/* Error States */
 .form-group input.error,
 .form-group textarea.error {
     border-color: var(--error);
@@ -236,7 +229,6 @@
     margin-top: 0.25rem;
 }
 
-/* Success Message */
 .success-message {
     padding: 1rem;
     background-color: var(--success);
@@ -245,13 +237,11 @@
     margin-bottom: 1rem;
 }
 
-/* Responsive Design */
 @media (max-width: 1024px) {
     .contact-wrapper {
         grid-template-columns: 1fr;
         max-width: 700px;
     }
-
     .contact-hero-content h1 {
         font-size: 3rem;
     }
@@ -261,11 +251,9 @@
     .contact-hero {
         padding: 6rem 0;
     }
-
     .contact-hero-content h1 {
         font-size: 2.5rem;
     }
-
     .contact-info,
     .contact-form-container {
         padding: 2rem;
@@ -276,24 +264,21 @@
     .contact-hero-content h1 {
         font-size: 2rem;
     }
-
     .contact-tag {
         font-size: 0.75rem;
     }
-
     .contact-method {
         flex-direction: column;
         text-align: center;
     }
-
     .method-icon {
         margin: 0 auto;
     }
-
     .submit-button {
         width: 100%;
     }
 }
+
 @keyframes up {
     0% {
         transform: translateY(200px);

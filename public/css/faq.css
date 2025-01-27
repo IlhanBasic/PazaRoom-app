@@ -14,7 +14,6 @@
     margin-top: 20px;
 }
 
-/* FAQ Container */
 .faq-container {
     max-width: 900px;
     margin: 20px auto;
@@ -25,13 +24,11 @@
     overflow: hidden;
 }
 
-/* FAQ Item */
 .faq-item {
     border-bottom: 1px solid #e4e4e4;
     transition: background-color 0.3s;
 }
 
-/* FAQ Question */
 .faq-question {
     background: none;
     border: none;
@@ -48,13 +45,11 @@
     transition: background-color 0.3s ease-in-out;
 }
 
-/* Hover Effect for FAQ Question */
 .faq-question:hover {
     background-color: #f9f9f9;
     color: #007bff;
 }
 
-/* FAQ Answer */
 .faq-answer {
     display: none;
     padding: 15px;
@@ -66,24 +61,20 @@
     line-height: 1.6;
 }
 
-/* Active State */
 .faq-item.active .faq-answer {
     display: block;
 }
 
-/* Arrow Animation */
 .arrow {
     transition: transform 0.3s ease-in-out;
     font-size: 18px;
     color: #007bff;
 }
 
-/* Rotate Arrow on Active */
 .faq-item.active .arrow {
     transform: rotate(180deg);
 }
 
-/* Responsive Styles */
 @media (max-width: 768px) {
     .faq-container {
         padding: 15px;
@@ -104,3 +95,4 @@
         font-size: 16px;
     }
 }
+

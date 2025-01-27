@@ -1,4 +1,4 @@
-/* Search section */
+
 .search-section {
     background-color: #2563eb ;
     color: white;
@@ -69,9 +69,7 @@
     color: #4b5563;
 }
 
-/* Postojeći CSS ostaje isti, dodajemo novi na kraju */
 
-/* Pagination Styling */
 .pagination-wrapper {
     margin: 2rem 0;
     display: flex;
@@ -153,12 +151,10 @@
         font-size: 0.875rem;
     }
 
-    /* Hide some page numbers on mobile */
     .pagination .page-item:not(:first-child):not(:last-child):not(.active):not(.disabled) {
         display: none;
     }
 
-    /* Show ellipsis for better context */
     .pagination .page-item:nth-last-child(2):not(.active)::before {
         content: "...";
         display: flex;
@@ -168,7 +164,6 @@
     }
 }
 
-/* Extra small devices */
 @media (max-width: 360px) {
     .page-link,
     .page-item span {

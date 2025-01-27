@@ -8,8 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
-use App\Models\Role; // Import the Role model
-
+use App\Models\Role; 
 class UsersController extends Controller
 {
     /**
@@ -128,13 +127,13 @@ class UsersController extends Controller
                 'required',
                 'string',
                 'max:255',
-                'regex:/^[a-zA-Z]+$/'
+                'regex:/^[a-zA-ZšđžčćŠĐŽČĆ]+$/'
             ],
             'last_name' => [
                 'required',
                 'string',
                 'max:255',
-                'regex:/^[a-zA-Z]+$/'
+                'regex:/^[a-zA-ZšđžčćŠĐŽČĆ]+$/'
             ],
             'phone_number' => [
                 'nullable',
@@ -258,10 +257,12 @@ class UsersController extends Controller
         if (!$user) {
             return redirect()->route('login')->with('error', 'Morate biti prijavljeni.');
         }
-
+        if ($user->role_id != 2) {
+            return redirect()->route('home')->with('error', 'Morate biti student.');
+        }
         $favorites = Property::whereHas('favorites', function ($query) use ($user) {
             $query->where('user_id', $user->id);
-        })->paginate(10);
+        })->paginate(6);
 
         return view('user.favorites', ["favorites" => $favorites]);
     }
@@ -284,7 +285,7 @@ class UsersController extends Controller
         }
 
         if ($user->favorites()->where('property_id', $propertyId)->exists()) {
-            return redirect()->back()->with('info', 'Smeštaj je već u favoritima.');
+            return redirect()->back()->with('success', 'Smeštaj je već u favoritima.');
         }
 
         $user->favorites()->attach($propertyId);

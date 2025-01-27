@@ -29,6 +29,10 @@ class AdminController extends Controller
     }
     public function create_user()
     {
+        $user = auth()->user();
+        if($user == null || $user->role_id !== 3) {
+            return redirect('/')->with('error', 'Nemate pristup ovoj stranici.');
+        }
         $roles = Role::all();
         return view('admin.create-user', ['roles' => $roles]);
     }

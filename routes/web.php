@@ -3,12 +3,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BlogsController;
 use App\Http\Controllers\Contact_MessagesController;
-use App\Http\Controllers\MessagesController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\ReviewsController;
 use App\Http\Controllers\PropertiesController;
-use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\PropertyTagsController;
 
 Route::get('/', [PropertiesController::class, 'index'])->name('home');

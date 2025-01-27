@@ -1,4 +1,4 @@
-/* Base styles */
+
 .pz-container {
     max-width: 1200px;
     margin: 0 auto;
@@ -135,7 +135,6 @@
     background-color: #3b82f6;
 }
 
-/* Grid layouts */
 .pz-grid-2 {
     display: grid;
     grid-template-columns: 1fr;
@@ -148,7 +147,6 @@
     }
 }
 
-/* Map container */
 .pz-map-container {
     margin-bottom: 1rem;
 }

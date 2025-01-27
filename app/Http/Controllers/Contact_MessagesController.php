@@ -40,6 +40,9 @@ class Contact_MessagesController extends Controller
     {
         if (auth()->check() && auth()->user()->role_id == 3) {
             $message = Contact_Message::find($id);
+            if($message == null) {
+                return view('errors.404');
+            }
             return view('contact.show', compact('message'));
         }
         return redirect('/')->with('error', 'Nemate pristup ovoj stranici.');
@@ -50,6 +53,9 @@ class Contact_MessagesController extends Controller
             return redirect('/')->with('error', 'Nemate pristup ovoj stranici.');
         }
         $message = Contact_Message::find($id);
+        if($message == null) {
+            return view('errors.404');
+        }
         $message->delete();
         return redirect()->route('admin')->with([
             'success' => 'Poruka je uspešno obrisana.',

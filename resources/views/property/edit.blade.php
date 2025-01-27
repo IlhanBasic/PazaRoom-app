@@ -249,28 +249,23 @@
         });
     </script>
     <script>
-        // Inicijalizacija mape sa tačnim koordinatama iz PHP-a
         const lat = {{ $property->latitude }};
         const lng = {{ $property->longitude }};
-        const map = L.map('map').setView([lat, lng], 13); // Postavite početnu poziciju sa latitude i longitude
+        const map = L.map('map').setView([lat, lng], 13); 
 
-        // Dodavanje OpenStreetMap sloja
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
 
-        // Dodavanje marker-a na mapu sa tačnim početnim koordinatama
         const marker = L.marker([lat, lng], {
             draggable: true
         }).addTo(map);
 
-        // Kada se povuče marker, ažuriraj skrivena polja sa novim koordinatama
         marker.on('dragend', function(e) {
             const position = marker.getLatLng();
             document.getElementById('latitude').value = position.lat;
             document.getElementById('longitude').value = position.lng;
 
-            // Traženje adrese na osnovu koordinata
             fetch(
                     `https://nominatim.openstreetmap.org/reverse?format=json&lat=${position.lat}&lon=${position.lng}&addressdetails=1`
                 )
@@ -281,7 +276,6 @@
                 });
         });
 
-        // Kada korisnik klikne na mapu, premesti marker na novo mesto
         map.on('click', function(e) {
             const {
                 lat,
@@ -291,7 +285,6 @@
             document.getElementById('latitude').value = lat;
             document.getElementById('longitude').value = lng;
 
-            // Traženje adrese na osnovu novih koordinata
             fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}&addressdetails=1`)
                 .then(response => response.json())
                 .then(data => {

@@ -1,4 +1,4 @@
-/* Container styles */
+
 .property-list-section {
     padding: 2rem 1rem;
     max-width: 1200px;
@@ -24,7 +24,6 @@
     width: 100%;
 }
 
-/* Empty message styling */
 .empty-message {
     text-align: center;
     padding: 2rem;
@@ -35,14 +34,12 @@
     margin: 1rem 0;
 }
 
-/* Pagination styles */
 .pagination-container {
     margin-top: 2rem;
     display: flex;
     justify-content: center;
 }
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
     .property-list-section {
         padding: 1rem 0.5rem;

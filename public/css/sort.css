@@ -45,17 +45,19 @@
 
 @media (max-width: 360px) {
     .sort-form {
-        flex-direction: column; /* Stack items vertically */
-        padding: 8px; /* Add padding to prevent content from touching the edges */
+        flex-direction: column; 
+        padding: 8px; 
     }
 
     .sort-select, .sort-button {
-        width: 100%; /* Make both select and button take full width */
-        margin-right: 0; /* Remove right margin */
-        margin-bottom: 8px; /* Space between the select and button */
+        width: 100%; 
+        margin-right: 0; 
+        margin-bottom: 8px; 
     }
 
     .sort-button {
-        padding: 10px 12px; /* Adjust padding for smaller screens */
+        padding: 10px 12px; 
     }
 }
+
+

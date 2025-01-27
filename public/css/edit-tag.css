@@ -1,11 +1,10 @@
-/* Container */
+
 .container {
     margin: 0 auto;
     padding: 2rem 1rem;
     max-width: 1024px;
 }
 
-/* Heading */
 .heading {
     font-size: 1.5rem;
     font-weight: 600;
@@ -13,7 +12,6 @@
     text-align: center;
 }
 
-/* Form Container */
 .form-container {
     background-color: white;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -24,7 +22,6 @@
     margin: 0 auto;
 }
 
-/* Form Group */
 .form-group {
     display: grid;
     grid-template-columns: 1fr;
@@ -39,14 +36,12 @@
     }
 }
 
-/* Label */
 .label {
     font-size: 0.875rem;
     font-weight: 500;
     color: #4b5563;
 }
 
-/* Input */
 .input-container {
     display: flex;
     flex-direction: column;
@@ -67,14 +62,12 @@
     box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
 }
 
-/* Error Message */
 .error-message {
     margin-top: 0.25rem;
     font-size: 0.875rem;
     color: #ef4444;
 }
 
-/* Submit Button */
 .submit-button {
     width: 100%;
     background-color: #2563eb;

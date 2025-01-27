@@ -1,4 +1,4 @@
-/* Property Card Container */
+
 .property-card {
     display: flex;
     background: #fff;
@@ -17,7 +17,6 @@
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
 }
 
-/* Property Image */
 .property-image {
     position: relative;
     width: 300px;
@@ -31,7 +30,6 @@
     object-fit: cover;
 }
 
-/* Property Details */
 .property-details {
     padding: 1.5rem;
     display: flex;
@@ -40,7 +38,6 @@
     flex: 1;
 }
 
-/* Header Section */
 .header-section {
     margin-bottom: 1rem;
 }
@@ -53,7 +50,6 @@
     word-break: break-word;
 }
 
-/* Tags */
 .tags {
     display: flex;
     flex-wrap: wrap;
@@ -70,7 +66,6 @@
     white-space: nowrap;
 }
 
-/* Location */
 .location {
     display: flex;
     align-items: center;
@@ -85,7 +80,6 @@
     color: #4a5568;
 }
 
-/* Price */
 .price {
     font-size: 1.5rem;
     font-weight: 600;
@@ -99,7 +93,6 @@
     font-weight: normal;
 }
 
-/* Action Buttons */
 .action-buttons {
     display: flex;
     align-items: center;
@@ -145,8 +138,6 @@
     background: #e53e3e;
     color: white;
 }
-
-/* Declined State */
 .declined {
     opacity: 0.8;
 }
@@ -165,7 +156,6 @@
     font-weight: 500;
 }
 
-/* Favorites Form */
 .favorites-property-form {
     display: flex;
     align-items: center;
@@ -191,7 +181,6 @@
     font-weight: bold;
 }
 
-/* Enhanced Responsive Design */
 @media (max-width: 900px) {
     .property-card {
         margin: 1rem;
@@ -279,7 +268,6 @@
     }
 }
 
-/* Small Phone Screens */
 @media (max-width: 360px) {
     .property-card {
         margin: 0.5rem;

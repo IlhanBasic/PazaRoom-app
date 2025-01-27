@@ -183,8 +183,6 @@
         document.addEventListener('DOMContentLoaded', function() {
             const dropdownButton = document.getElementById('dropdownButton');
             const dropdownMenu = document.getElementById('dropdownMenu');
-
-            // Toggle dropdown visibility
             dropdownButton.addEventListener('click', function() {
                 if (dropdownMenu.style.display === 'none' || dropdownMenu.style.display === '') {
                     dropdownMenu.style.display = 'block';

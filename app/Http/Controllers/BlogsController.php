@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use Illuminate\Container\Attributes\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -16,11 +17,19 @@ class BlogsController extends Controller
 
     public function create()
     {
+        $user = auth()->user();
+        if($user == null || $user->role_id !== 3) {
+            return redirect('/')->with('error', 'Nemate pristup ovoj stranici.');
+        }
         return view('blog.create');
     }
 
     public function store(Request $request)
     {
+        $user = auth()->user();
+        if($user == null || $user->role_id !== 3) {
+            return redirect('/')->with('error', 'Nemate pristup ovoj stranici.');
+        }
         $request->validate([
             'category' => 'required|in:smeštaj,štednja novca,studentski život',
             'title' => 'required|string|max:255',
@@ -50,19 +59,15 @@ class BlogsController extends Controller
             'file_link.max' => 'Maksimalna veličina fajla je 10MB.',
         ]);
     
-        // Generisanje unikatnih naziva fajlova
         $imageName = time() . '_' . $request->file('image')->getClientOriginalName();
         $fileName = time() . '_' . $request->file('file_link')->getClientOriginalName();
-    
-        // Spremanje slike na S3 sa storeAs i public visibility
+
         $imagePath = $request->file('image')->storeAs('blog_images', $imageName, ['disk' => 's3', 'visibility' => 'public']);
         $imageUrl = Storage::disk('s3')->url($imagePath);
-    
-        // Spremanje fajla na S3 sa storeAs i public visibility
+
         $filePath = $request->file('file_link')->storeAs('blog_posts', $fileName, ['disk' => 's3', 'visibility' => 'public']);
         $fileUrl = Storage::disk('s3')->url($filePath);
     
-        // Kreiranje novog bloga
         Blog::create([
             'category' => $request->category,
             'title' => $request->title,
@@ -78,12 +83,23 @@ class BlogsController extends Controller
     
     public function edit($id)
     {
+        $user = auth()->user();    
+        if($user == null || $user->role_id !== 3) {
+            return redirect('/')->with('error', 'Nemate pristup ovoj stranici.');
+        }
         $blog = Blog::find($id);
+        if($blog == null){
+            return redirect('/blogs')->with('error', 'Blog ne postoji.');
+        }
         return view('blog.edit', compact('blog'));
     }
 
     public function update(Request $request, $id)
     {
+        $user = auth()->user();
+        if($user == null || $user->role_id !== 3) {
+            return redirect('/')->with('error', 'Nemate pristup ovoj stranici.');
+        }
         $request->validate([
             'category' => 'required|in:smeštaj,štednja novca,studentski život',
             'title' => 'required|string|max:255',
@@ -113,7 +129,6 @@ class BlogsController extends Controller
             return redirect()->route('blogs')->with('error', 'Blog nije pronađen!');
         }
     
-        // **Čuvanje slike na S3 sa javnom vidljivošću**
         if ($request->hasFile('image')) {
             if ($blog->image) {
                 Storage::disk('s3')->delete($blog->image);
@@ -143,7 +158,14 @@ class BlogsController extends Controller
     
     public function destroy($id)
     {
+        $user = auth()->user();
+        if($user == null || $user->role_id !== 3) {
+            return redirect('/')->with('error', 'Nemate pristup ovoj stranici.');
+        }  
         $blog = Blog::find($id);
+        if($blog == null){
+            return redirect('/blogs')->with('error', 'Blog ne postoji.');
+        }
         $blog->delete();    
         if ($blog->file_link) {
             Storage::disk('public')->delete($blog->file_link);

@@ -1,84 +1,79 @@
-/* General Container Styles */
+
 .container {
-    max-width: 1200px; /* Equivalent to max-w-7xl */
+    max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 16px; /* Equivalent to px-4 */
-    padding-right: 16px; /* Equivalent to px-4 */
+    padding-left: 16px;
+    padding-right: 16px;
 }
 
-/* Hero Section Styles */
 .hero-section {
-    background-color: #2563EB; /* Blue background equivalent to bg-blue-600 */
-    color: white; /* White text color */
-    padding-top: 80px; /* Equivalent to py-20 */
-    padding-bottom: 80px; /* Equivalent to py-20 */
-    text-align: center; /* Center text */
+    background-color: #2563EB;
+    color: white;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    text-align: center;
 }
 
 .hero-title {
-    font-size: 2.5rem; /* Equivalent to text-4xl */
-    font-weight: bold; /* Bold text */
-    margin-bottom: 16px; /* Equivalent to mb-4 */
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 16px;
 }
 
-/* Filter Section Styles */
 .filter-section {
-    background-color: #F7FAFC; /* Light gray background equivalent to bg-gray-100 */
-    padding-top: 64px; /* Equivalent to py-16 */
-    padding-bottom: 64px; /* Equivalent to py-16 */
+    background-color: #F7FAFC;
+    padding-top: 64px;
+    padding-bottom: 64px;
 }
 
 .filter-title {
-    font-size: 2.5rem; /* Equivalent to text-4xl */
-    font-weight: bold; /* Bold text */
-    text-align: center; /* Center text */
-    margin-bottom: 32px; /* Equivalent to mb-8 */
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 32px;
 }
 
 .filter-container {
     display: flex;
-    flex-direction: column; /* Column layout for small screens */
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-/* Property List Section Styles */
 .property-list-section {
-    padding-top: 64px; /* Equivalent to py-16 */
-    padding-bottom: 64px; /* Equivalent to py-16 */
+    padding-top: 64px;
+    padding-bottom: 64px;
 }
 
 .property-list-title {
-    font-size: 1.875rem; /* Equivalent to text-3xl */
-    font-weight: bold; /* Bold text */
-    margin-bottom: 32px; /* Equivalent to mb-8 */
-    text-align: center; /* Center text */
+    font-size: 1.875rem;
+    font-weight: bold;
+    margin-bottom: 32px;
+    text-align: center;
 }
 
-/* Sorting Container Styles */
 .sorting-container {
    display:flex;
    justify-content:center;
    align-items:center;
 }
 
-/* Property Grid Styles */
 .property-grid {
    display:grid;
-   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Responsive grid layout */
-   gap: 32px; /* Space between property cards equivalent to gap-8 */ 
+   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+   gap: 32px;
 }
 
-/* No Properties Message Styles */
 .no-properties-message {
    text-align:center;
-   color:#4B5563; /* Gray color equivalent to text-gray-600 */ 
+   color:#4B5563;
 }
 
-/* Pagination Container Styles */ 
 .pagination-container {
    margin-left:auto;
    margin-right:auto;
-   margin-top:32px; /* Space above pagination */ 
+   margin-top:32px;
 }
+
+

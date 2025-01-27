@@ -151,9 +151,9 @@ class PropertiesController extends Controller
     {
         $property = Property::findOrFail($id);
         $owner = User::findOrFail($property->owner_id);
-        if($property->status == 'Declined') {
-            return redirect('/properties')->with('error', 'Nekretnina je odbijena.');
-        }
+            if($property->status == 'Declined') {
+                return redirect('/properties')->with('error', 'Nekretnina je odbijena.');
+            }
         return view('property.show', ['property' => $property, 'owner' => $owner]);
     }
 

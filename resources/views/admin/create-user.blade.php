@@ -85,18 +85,14 @@
                         </div>
 
                         <button type="submit" id="submit-button" class="submit-btn">
-                            Registrujte se
+                            Dodaj korisnika
                             <i class="fa-solid fa-user-plus"></i>
                         </button>
                     </form>
-                    <p class="login-link">
-                        Već imate račun? <a href="{{ route('login') }}">Prijavite se ovde</a>
-                    </p>
                 </div>
+                @include('partials._loader')
             </div>
         </div>
-        <script src="{{ asset('js/loading.js') }}" defer></script>
+        <script src="{{ asset('js/loading.js') }}"></script>
 </body>
-
-
 </html>

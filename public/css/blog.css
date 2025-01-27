@@ -1,4 +1,4 @@
-/* Container styles */
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -57,8 +57,6 @@ h1 {
     letter-spacing: -0.5px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
-
-/* Blog grid styles */
 .blog-grid {
     display: flex;
     flex-wrap: wrap;
@@ -174,7 +172,6 @@ h1 {
     border-top: 1px solid #f3f4f6;
 }
 
-/* Action buttons styles */
 .action-buttons {
     display: flex;
     justify-content: center;

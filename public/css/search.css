@@ -61,7 +61,6 @@
     animation: slideLeft 0.5s ease-out forwards;
     animation-delay: var(--delay, 0ms);
 }
-/* Search Input */
 .search-container {
     width: 100%;
     position: relative;

@@ -1,4 +1,4 @@
-/* Osnovni stilovi za Contact Component */
+
 .contact-container {
     position: fixed;
     right: 1rem;
@@ -100,7 +100,7 @@
 
 /* Responzivnost */
 
-/* Ekrani ispod 1024px (Laptop i manji) */
+/* Ekrani ispod 1024px */
 @media (max-width: 1024px) {
     .contact-container {
         right: 0.5rem;
@@ -108,7 +108,7 @@
     }
 }
 
-/* Ekrani ispod 1120px (Tablet) */
+/* Ekrani ispod 1120px  */
 @media (max-width: 1130px) {
     .contact-container {
         position: relative;
@@ -121,7 +121,7 @@
     }
 }
 
-/* Ekrani ispod 640px (Mobilni uređaji) */
+/* Ekrani ispod 640px  */
 @media (max-width: 640px) {
     .contact-header-title {
         font-size: 1rem;

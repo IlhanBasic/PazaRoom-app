@@ -1,4 +1,4 @@
-/* General layout */
+
 .registration-container {
     display: flex;
     justify-content: center;
@@ -65,7 +65,6 @@
     animation-delay: 200ms;
 }
 
-/* Add more for remaining inputs with increasing delay */
 
 .input-field {
     width: 100%;
@@ -153,7 +152,6 @@
     75% { transform: translateX(5px); }
 }
 
-/* Error messages */
 .error-message {
     color: #ef4444;
     font-size: 0.875rem;

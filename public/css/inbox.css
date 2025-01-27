@@ -1,4 +1,4 @@
-/* Inbox Styling */
+
 .inbox-container {
     background: white;
     padding: 20px;
@@ -35,7 +35,6 @@
     color: #999;
 }
 
-/* Responsiveness for Inbox */
 @media (max-width: 768px) {
     .inbox-container {
         padding: 15px;

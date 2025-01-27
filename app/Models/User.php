@@ -65,17 +65,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Property::class);
     }
-    public function reservations()
-    {
-        return $this->hasMany(Reservation::class);
-    }
     public function favorites()
     {
         return $this->belongsToMany(Property::class, 'favorites', 'user_id', 'property_id')->withTimestamps();
-    }
-    public function messages()
-    {
-        return $this->hasMany(Message::class);
     }
     public function contact_messages(){
         return $this->hasMany(Contact_Message::class);
